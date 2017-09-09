@@ -41,7 +41,7 @@ passport.use(new GitHubStrategy({
     users.findOne({ gitID: profile.id }, (err, result) => {
       if (err) throw err;
       if (!result) {
-        const newUser = { "_id": ObjectID(), "gitID": profile.id, "polls": [] }
+        const newUser = { "_id": ObjectID(), "gitID": profile.id, "name": profile.name, "polls": [] }
         users.insertOne(newUser, (err, res) => {
           return parsed(newUser);
         });
@@ -93,10 +93,68 @@ app.get('/api/user',
 });
 
 //Provides list of all polls regardless of login status.
-//TODO create mongo call for all polls.
 app.get('/api/polls', (req, res) => {
+  mongodb.connect(mongoUrl, (err, db) => {
+    if (err) throw err;
+    const polls = db.collection('polls');
+    polls.find({}).toArray((err, results) => {
+      if (err) throw err;
+      res.send(results);
+      db.close();
+    });
+  });
+});
 
-})
+//
+app.get('/api/poll/:pollID', (req, res) => {
+  mongodb.connect(mongoUrl, (err, db) => {
+    if (err) throw err;
+    const polls = db.collection('polls');
+    polls.findOne({ _id: req.params.pollID }, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+      db.close();
+    });
+  });
+});
+
+app.get('/api/addpoll',
+  ensureAuthenticated(req, res),
+  (req, res) => {
+    const newPoll = {
+      "_id": ObjectID(),
+      "creator": User.name,
+      "title": req.query.title,
+      "options": req.query.options
+    }
+    mongodb.connect(mongoUrl, (err, db) => {
+      if (err) throw err;
+      const polls = db.collection('polls');
+      polls.insertOne(newPoll, (err, result) => {
+        if (err) throw err;
+        res.redirect('/poll/' + newPoll.id.toString());
+        db.close();
+      });
+    });
+  }
+);
+
+app.get('/api/addOpt',
+  ensureAuthenticated(req, res),
+  (req, res) => {
+    mongodb.connect(mongoUrl, (err, db) => {
+      if (err) throw err;
+      const polls = db.collection('polls');
+      polls.update({ _id: req.query.id }, { $push { options: { "option": req.query.option, "selections": 0 }}}, (err, result) => {
+        if (err) throw err;
+        res.redirect('/poll/' + req.query.id);
+        db.close();
+      });
+    });
+  }
+);
+
+
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
