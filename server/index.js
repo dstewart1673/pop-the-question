@@ -1,17 +1,17 @@
 const express = require('express');
 const path = require('path');
 const passport = require('passport');
+const GitHubStrategy = require('passport-github2').Strategy;
 const util = require('util');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const GitHubStrategy = require('passport-github2').Strategy;
 const partials = require('express-partials');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const mongoUrl = process.env.MONGOLAB_URI;
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://mainAPI:incorrectNumptyCheese@ds125994.mlab.com:25994/pop-the-question';
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '2a14db12b90927f4e53f';
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || 'c33eb824e9f04da971e1554f2f668679797dbbb7';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -57,7 +57,7 @@ app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
+app.use(session({ secret: process.env.SESSION_SECRET || 'pleasePassTheMayo', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 // Priority serve any static files.
@@ -78,20 +78,20 @@ app.get('/api/logout', (req, res) => {
 
 //Provides logged-in user's created poll data.
 app.get('/api/user',
-  ensureAuthenticated(req, res),
+  ensureAuthenticated,
   (req, res) => {
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
-      users.findOne({ _id = User.id }, (err, result) => {
+      users.findOne({ _id: User.id }, (err, result) => {
         if (err) throw err;
         res.send(result);
         db.close();
       });
     });
-  }
-});
+  });
 
+//TODO: Make this return only title and descr
 //Provides list of all polls regardless of login status.
 app.get('/api/polls', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
@@ -118,8 +118,9 @@ app.get('/api/poll/:pollID', (req, res) => {
   });
 });
 
+//TODO: Add step to add poll data to user's db entry
 app.get('/api/addpoll',
-  ensureAuthenticated(req, res),
+  ensureAuthenticated,
   (req, res) => {
     const newPoll = {
       "_id": ObjectID(),
@@ -140,12 +141,13 @@ app.get('/api/addpoll',
 );
 
 app.get('/api/addOpt',
-  ensureAuthenticated(req, res),
+  ensureAuthenticated,
   (req, res) => {
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const polls = db.collection('polls');
-      polls.update({ _id: req.query.id }, { $push { options: { "option": req.query.option, "selections": 0 }}}, (err, result) => {
+      polls.update({ _id: req.query.id }, { $push: { options: { "option": req.query.option, "selections": 0 }}},
+      (err, result) => {
         if (err) throw err;
         res.redirect('/poll/' + req.query.id);
         db.close();
@@ -158,7 +160,7 @@ app.get('/api/addOpt',
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '../react-ui/public', 'index.html'));
 });
 
 app.listen(PORT, function () {

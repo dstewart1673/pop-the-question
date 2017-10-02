@@ -5,17 +5,21 @@ import { BrowserRouter as Router,
 } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+import Polls from './Polls';
+import UserPage from './UserPage';
+import Poll from './Poll';
+import New from './New';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      fetching: true
+      user: null
     };
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     fetch('/api')
       .then(response => {
         if (!response.ok) {
@@ -34,7 +38,7 @@ class App extends Component {
           fetching: false
         });
       })
-  }
+  }*/
 
   render() {
     return (
@@ -42,11 +46,11 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React</h2>
+            <h2><a href='/api/login'>login</a></h2>
           </div>
           <Route exact path='/' component={Home} />
           <Route path='/polls' component={Polls} />
-          <Route path='/user' component={User} />
+          <Route path='/user' component={UserPage} />
           <Route path='/poll/:id' component={Poll} />
           <Route path='/new' component={New} />
           <p className="App-intro">
@@ -56,9 +60,7 @@ class App extends Component {
             </a><br/>
           </p>
           <p className="App-intro">
-            {this.state.fetching
-              ? 'Fetching message from API'
-              : this.state.message}
+            Hello!
           </p>
         </div>
       </Router>
