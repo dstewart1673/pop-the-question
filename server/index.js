@@ -28,8 +28,7 @@ passport.deserializeUser((id, done) => {
 //establishes user login and creates new user if not previously logged in
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
-  clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: "http://pop-the-question.herokuapp.com/auth/github/callback"
+  clientSecret: GITHUB_CLIENT_SECRET
 },
 (accessToken, refreshToken, profile, done) => {
   function parsed (obj) {
