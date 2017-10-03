@@ -46,7 +46,7 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2><a href='/api/login'>login</a></h2>
+            <h2><a href='/login'>login</a></h2>
           </div>
           <Route exact path='/' component={Home} />
           <Route path='/polls' component={Polls} />

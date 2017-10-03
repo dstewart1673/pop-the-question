@@ -65,7 +65,7 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 
 //Redirects user to GitHub's authentication page.  Once logged in, client will be redirected to their user page.
-app.get('/api/login',
+app.get('/login',
   passport.authenticate('github'),
   (req, res) => {
   //client is sent to GitHub, so this is not used.
