@@ -18,6 +18,7 @@ class UserPage extends Component {
         return response.json;
       })
       .then(json => {
+        console.log(json);
         this.setState({
           username: json.name,
           polls: json.polls
