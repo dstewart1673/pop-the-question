@@ -9,9 +9,9 @@ const methodOverride = require('method-override');
 const partials = require('express-partials');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://mainAPI:incorrectNumptyCheese@ds125994.mlab.com:25994/pop-the-question';
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '2a14db12b90927f4e53f';
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || 'c33eb824e9f04da971e1554f2f668679797dbbb7';
+const mongoUrl = process.env.MONGOLAB_URI;
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 const app = express();
 const PORT = process.env.PORT || 5000;
 
