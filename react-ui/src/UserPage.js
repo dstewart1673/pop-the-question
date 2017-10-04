@@ -17,11 +17,11 @@ class UserPage extends Component {
         }
         return response.json;
       })*/
-      .then(json => {
-        console.log(json);
+      .then(response => {
+        console.log(response);
         this.setState({
-          username: json.name,
-          polls: json.polls
+          username: response.json.name,
+          polls: response.json.polls
         });
       });
   }
