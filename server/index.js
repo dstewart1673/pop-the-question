@@ -32,6 +32,7 @@ passport.use(new GitHubStrategy({
 },
 (accessToken, refreshToken, profile, done) => {
   function parsed (obj) {
+    console.log("BLEEP");
     return obj;
   };
   const prof = mongodb.connect(mongoUrl, (err, db) => {
@@ -167,6 +168,10 @@ app.listen(PORT, function () {
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  console.log("bleep");
+  if (req.isAuthenticated()) {
+    console.log("bloop");
+    return next();
+  };
   res.redirect('/login')
 }
