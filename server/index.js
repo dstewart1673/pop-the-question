@@ -102,7 +102,7 @@ app.get('/api/user',
       const users = db.collection('users');
       users.findOne({ _id: req.user.id }, (err, result) => {
         if (err) throw err;
-        res.send(result);
+        res.send(JSON.stringify(result));
         db.close();
       });
     });
