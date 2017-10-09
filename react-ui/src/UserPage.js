@@ -5,7 +5,7 @@ class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      username: 'User',
       polls: ''
     };
   };
@@ -17,7 +17,7 @@ class UserPage extends Component {
         }
         return response.json;
       })*/
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.setState({
           username: response.name,
