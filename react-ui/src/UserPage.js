@@ -46,7 +46,7 @@ import React, { Component } from 'react';
 */
 
 function UserPage() {
-  fetch('/api/user')
+  /*fetch('/api/user')
     .then(response => {
       if (!response.ok) {
         throw new Error(`status ${response.status}`);
@@ -58,7 +58,12 @@ function UserPage() {
       return (
         <div><h1>Hello, {json.name}!</h1></div>
       );
-    });
+    });*/
+    return (
+      <div>
+        <h1>Hi there!</h1>
+      </div>
+    )
 }
 
 export default UserPage;
