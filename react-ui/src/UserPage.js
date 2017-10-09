@@ -9,14 +9,14 @@ class UserPage extends Component {
       polls: ''
     };
   };
-  componentDidMount() {
+  /*componentDidMount() {
     fetch('/api/user')
-      /*.then(response => {
+      .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
         return response.json;
-      })*/
+      })
       .then((response) => {
         console.log(response);
         this.setState({
@@ -24,7 +24,7 @@ class UserPage extends Component {
           polls: response.polls || null,
         });
       });
-  }
+  } */
   render() {
     return (
       <div>
