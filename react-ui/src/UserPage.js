@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
-class UserPage extends Component {
+/*class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +9,7 @@ class UserPage extends Component {
       polls: ''
     };
   };
-  /*componentDidMount() {
+  componentDidMount() {
     fetch('/api/user')
       .then(response => {
         if (!response.ok) {
@@ -24,7 +24,7 @@ class UserPage extends Component {
           polls: response.polls || null,
         });
       });
-  } */
+  }
   render() {
     return (
       <div>
@@ -44,5 +44,21 @@ class UserPage extends Component {
   )
 })}
 */
+
+function UserPage() {
+  fetch('/api/user')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`status ${response.status}`);
+      }
+      return response.json;
+    })
+    .then((json) => {
+      console.log(json);
+      return (
+        <div><h1>Hello, {json.name}!</h1></div>
+      );
+    });
+}
 
 export default UserPage;
