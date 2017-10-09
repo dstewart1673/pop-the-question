@@ -47,6 +47,7 @@ passport.use(new GitHubStrategy({
         users.findOne({ id: profile.id }, (err, result) => {
           if (err) throw err;
           if (!result) {
+            console.log("bleep" + profile.name);
             const newUser = { "id": profile.id, "name": profile.name, "polls": [] }
             users.insertOne(newUser, (err, res) => {
               return done(null, parsed(newUser));
