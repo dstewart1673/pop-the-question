@@ -30,16 +30,19 @@ class UserPage extends Component {
       <div>
         <h1>Hello {this.state.username}!</h1>
         <h2>Here are your polls:</h2>
-        <div>{this.state.polls.map((poll, index) => {
-          return (
-            <div>
-              <p>Hi!</p>
-            </div>
-          )
-        })}</div>
+        <div><h1>TEST!</h1></div>
       </div>
     )
   }
 }
+
+/*{this.state.polls.map((poll, index) => {
+  return (
+    <div>
+      <p>Hi!</p>
+    </div>
+  )
+})}
+*/
 
 export default UserPage;
