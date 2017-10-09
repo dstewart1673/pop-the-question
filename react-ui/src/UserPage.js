@@ -21,7 +21,7 @@ class UserPage extends Component {
         console.log(response);
         this.setState({
           username: response.json.name,
-          polls: response.json.polls
+          polls: response.json.polls || null,
         });
       });
   }
@@ -33,7 +33,7 @@ class UserPage extends Component {
         <div>{this.state.polls.map((poll, index) => {
           return (
             <div>
-              <p><a href={'/poll/' + poll[0]}>{poll[1]}</a></p>
+              <p>Hi!</p>
             </div>
           )
         })}</div>
