@@ -43,7 +43,7 @@ passport.use(new GitHubStrategy({
       mongodb.connect(mongoUrl, (err, db) => {
         if (err) throw err;
         const users = db.collection('users');
-        users.findOne({ id: prof.json.id }, (err, result) => {
+        users.findOne({ id: prof.id }, (err, result) => {
           if (err) throw err;
           if (!result) {
             console.log("bleep" + prof.displayName);
