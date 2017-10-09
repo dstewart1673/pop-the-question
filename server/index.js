@@ -24,7 +24,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   mongodb.connect(mongoUrl, (err, db) => {
     const users = db.collection('users');
-    users.findById(id, (err, user) => {
+    users.findOne({ id: req.user.id }, (err, user) => {
       done(err, user);
       db.close();
     });
