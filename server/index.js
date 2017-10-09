@@ -48,7 +48,7 @@ passport.use(new GitHubStrategy({
       users.findOne({ id: profile.id }, (err, result) => {
         if (err) throw err;
         if (!result) {
-          const newUser = { "id": profile.id, "name": profile.name, "polls": [] }
+          const newUser = { "id": profile.id, "name": profile.displayName, "polls": [] }
           users.insertOne(newUser, (err, res) => {
             return parsed(newUser);
             db.close();
@@ -87,7 +87,7 @@ app.get('/api/logout', (req, res) => {
 });
 
 app.get('/auth/callback',
-  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/' }));
+  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/login' }));
 
 //Provides logged-in user's created poll data.
 app.get('/api/user',
