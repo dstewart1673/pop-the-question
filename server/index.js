@@ -100,7 +100,7 @@ app.get('/api/user',
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
-      users.findOne({ _id: req.user.id }, (err, result) => {
+      users.findOne({ id: req.user.id }, (err, result) => {
         if (err) throw err;
         res.send(JSON.stringify(result));
         db.close();
