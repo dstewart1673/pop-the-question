@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 //enables persistent login sessions
 passport.serializeUser((user, done) => {
+  console.log("Serialized" + user.id);
   done(null, user.id);
 });
 
