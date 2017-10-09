@@ -59,6 +59,7 @@ passport.use(new GitHubStrategy({
         }
       });
     });
+    console.log(prof);
     return prof;
   })
 }));
