@@ -39,7 +39,7 @@ passport.use(new GitHubStrategy({
 },
 (req, accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
-    console.log(profile.name);
+    console.log(profile);
     if (!req.user) {
       mongodb.connect(mongoUrl, (err, db) => {
         if (err) throw err;
@@ -140,7 +140,6 @@ app.get('/api/addpoll',
   ensureAuthenticated,
   (req, res) => {
     const newPoll = {
-      "_id": ObjectID(),
       "creator": User.name,
       "title": req.query.title,
       "options": req.query.options
@@ -187,7 +186,6 @@ app.listen(PORT, function () {
 function ensureAuthenticated(req, res, next) {
   console.log(req.user);
   if (req.isAuthenticated()) {
-    console.log("bloop");
     return next();
   };
   res.redirect('/login')
