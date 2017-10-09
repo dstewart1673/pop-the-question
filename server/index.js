@@ -42,6 +42,7 @@ passport.use(new GitHubStrategy({
       console.log("BLEEP");
       return obj;
     };
+    console.log(parsed(profile));
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
