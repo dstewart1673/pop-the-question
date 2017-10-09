@@ -40,6 +40,7 @@ passport.use(new GitHubStrategy({
 (req, accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
     const prof = parsed(profile);
+    console.log(prof);
     if (!req.user) {
       mongodb.connect(mongoUrl, (err, db) => {
         if (err) throw err;
