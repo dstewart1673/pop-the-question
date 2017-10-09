@@ -87,8 +87,7 @@ app.get('/api/logout', (req, res) => {
 });
 
 app.get('/auth/callback',
-  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/' });
-);
+  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/' }));
 
 //Provides logged-in user's created poll data.
 app.get('/api/user',
