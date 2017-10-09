@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 5000;
 
 //enables persistent login sessions
 passport.serializeUser((user, done) => {
-  console.log("Serialized" + user.id);
   done(null, user.id);
 });
 
@@ -40,16 +39,15 @@ passport.use(new GitHubStrategy({
 (req, accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
     const prof = parsed(profile);
-    console.log(prof);
     if (!req.user) {
       mongodb.connect(mongoUrl, (err, db) => {
         if (err) throw err;
         const users = db.collection('users');
-        users.findOne({ id: prof.id }, (err, result) => {
+        users.findOne({ id: prof.json.id }, (err, result) => {
           if (err) throw err;
           if (!result) {
             console.log("bleep" + prof.name);
-            const newUser = { "id": prof.id, "name": prof.name, "polls": [] }
+            const newUser = { "id": prof.json.id, "name": prof.json.name, "polls": [] }
             users.insertOne(newUser, (err, res) => {
               return done(null, parsed(newUser));
               db.close();
