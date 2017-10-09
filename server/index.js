@@ -39,16 +39,16 @@ passport.use(new GitHubStrategy({
 },
 (req, accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
-    console.log(profile);
+    const prof = parsed(profile);
     if (!req.user) {
       mongodb.connect(mongoUrl, (err, db) => {
         if (err) throw err;
         const users = db.collection('users');
-        users.findOne({ id: profile.id }, (err, result) => {
+        users.findOne({ id: prof.id }, (err, result) => {
           if (err) throw err;
           if (!result) {
-            console.log("bleep" + profile.name);
-            const newUser = { "id": profile.id, "name": profile.name, "polls": [] }
+            console.log("bleep" + prof.name);
+            const newUser = { "id": prof.id, "name": prof.name, "polls": [] }
             users.insertOne(newUser, (err, res) => {
               return done(null, parsed(newUser));
               db.close();
