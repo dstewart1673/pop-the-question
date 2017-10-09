@@ -42,7 +42,7 @@ passport.use(new GitHubStrategy({
       console.log("BLEEP");
       return obj;
     };
-    const prof = mongodb.connect(mongoUrl, (err, db) => {
+    mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
       users.findOne({ id: profile.id }, (err, result) => {
@@ -50,17 +50,17 @@ passport.use(new GitHubStrategy({
         if (!result) {
           const newUser = { "id": profile.id, "name": profile.displayName, "polls": [] }
           users.insertOne(newUser, (err, res) => {
+            console.log(parsed(newUser));
             return parsed(newUser);
             db.close();
           });
         } else {
+          console.log(parsed(result));
           return parsed(result);
           db.close();
         }
       });
     });
-    console.log(prof);
-    return prof;
   })
 }));
 
