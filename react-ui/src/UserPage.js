@@ -28,11 +28,11 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <h1>Hello {this.state.username}!</h1>
+        <h1>Hello!</h1>
         <h2>Here are your polls:</h2>
         <div><h1>TEST!</h1></div>
       </div>
-    )
+    );
   }
 }
 

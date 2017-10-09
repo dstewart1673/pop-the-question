@@ -71,7 +71,7 @@ app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(session({ secret: process.env.SESSION_SECRET || 'pleasePassTheMayo', resave: false, saveUninitialized: false }));
+app.use(session({ secret: process.env.SESSION_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
 // Priority serve any static files.
