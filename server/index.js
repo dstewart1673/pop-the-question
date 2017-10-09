@@ -22,9 +22,14 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
+  mongodb.connect(mongoUrl, (err, db) => {
+    const users = db.collection('users');
+    users.findById(id, (err, user) => {
+      done(err, user);
+      db.close();
+    });
+  })
+
 });
 //establishes user login and creates new user if not previously logged in
 passport.use(new GitHubStrategy({
@@ -32,26 +37,30 @@ passport.use(new GitHubStrategy({
   clientSecret: GITHUB_CLIENT_SECRET
 },
 (accessToken, refreshToken, profile, done) => {
-  function parsed (obj) {
-    console.log("BLEEP");
-    return obj;
-  };
-  const prof = mongodb.connect(mongoUrl, (err, db) => {
-    if (err) throw err;
-    const users = db.collection('users');
-    users.findOne({ gitID: profile.id }, (err, result) => {
+  process.nextTick(() => {
+    function parsed (obj) {
+      console.log("BLEEP");
+      return obj;
+    };
+    const prof = mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
-      if (!result) {
-        const newUser = { "_id": ObjectID(), "gitID": profile.id, "name": profile.name, "polls": [] }
-        users.insertOne(newUser, (err, res) => {
-          return parsed(newUser);
-        });
-      } else {
-        return parsed(result)
-      }
+      const users = db.collection('users');
+      users.findOne({ gitID: profile.id }, (err, result) => {
+        if (err) throw err;
+        if (!result) {
+          const newUser = { "_id": ObjectID(), "gitID": profile.id, "name": profile.name, "polls": [] }
+          users.insertOne(newUser, (err, res) => {
+            return parsed(newUser);
+            db.close();
+          });
+        } else {
+          return parsed(result);
+          db.close();
+        }
+      });
     });
-  });
-  return prof;
+    return prof;
+  })
 }));
 
 app.use(partials());
@@ -84,7 +93,7 @@ app.get('/api/user',
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
-      users.findOne({ _id: User.id }, (err, result) => {
+      users.findOne({ _id: req.user.id }, (err, result) => {
         if (err) throw err;
         res.send(result);
         db.close();
@@ -169,7 +178,7 @@ app.listen(PORT, function () {
 });
 
 function ensureAuthenticated(req, res, next) {
-  console.log("bleep");
+  console.log(req.user);
   if (req.isAuthenticated()) {
     console.log("bloop");
     return next();
