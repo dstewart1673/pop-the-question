@@ -88,7 +88,7 @@ app.get('/api/logout', (req, res) => {
 
 //Provides logged-in user's created poll data.
 app.get('/api/user',
-  ensureAuthenticated,
+  ensureAuthenticated(req, res,
   (req, res) => {
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
@@ -99,7 +99,7 @@ app.get('/api/user',
         db.close();
       });
     });
-  });
+  }));
 
 //TODO: Make this return only title and descr
 //Provides list of all polls regardless of login status.
@@ -130,7 +130,7 @@ app.get('/api/poll/:pollID', (req, res) => {
 
 //TODO: Add step to add poll data to user's db entry
 app.get('/api/addpoll',
-  ensureAuthenticated,
+  ensureAuthenticated(req, res,
   (req, res) => {
     const newPoll = {
       "_id": ObjectID(),
@@ -148,7 +148,7 @@ app.get('/api/addpoll',
       });
     });
   }
-);
+));
 
 app.get('/api/addOpt',
   ensureAuthenticated,
