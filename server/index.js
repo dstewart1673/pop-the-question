@@ -45,10 +45,10 @@ passport.use(new GitHubStrategy({
     const prof = mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const users = db.collection('users');
-      users.findOne({ gitID: profile.id }, (err, result) => {
+      users.findOne({ id: profile.id }, (err, result) => {
         if (err) throw err;
         if (!result) {
-          const newUser = { "_id": ObjectID(), "gitID": profile.id, "name": profile.name, "polls": [] }
+          const newUser = { "id": profile.id, "name": profile.name, "polls": [] }
           users.insertOne(newUser, (err, res) => {
             return parsed(newUser);
             db.close();
@@ -86,9 +86,13 @@ app.get('/api/logout', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/auth/callback',
+  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/' });
+);
+
 //Provides logged-in user's created poll data.
 app.get('/api/user',
-  ensureAuthenticated(req, res,
+  ensureAuthenticated,
   (req, res) => {
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
@@ -99,7 +103,7 @@ app.get('/api/user',
         db.close();
       });
     });
-  }));
+  });
 
 //TODO: Make this return only title and descr
 //Provides list of all polls regardless of login status.
@@ -130,7 +134,7 @@ app.get('/api/poll/:pollID', (req, res) => {
 
 //TODO: Add step to add poll data to user's db entry
 app.get('/api/addpoll',
-  ensureAuthenticated(req, res,
+  ensureAuthenticated,
   (req, res) => {
     const newPoll = {
       "_id": ObjectID(),
@@ -148,7 +152,7 @@ app.get('/api/addpoll',
       });
     });
   }
-));
+);
 
 app.get('/api/addOpt',
   ensureAuthenticated,
