@@ -34,35 +34,36 @@ passport.deserializeUser((id, done) => {
 //establishes user login and creates new user if not previously logged in
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
-  clientSecret: GITHUB_CLIENT_SECRET
+  clientSecret: GITHUB_CLIENT_SECRET,
+  passReqToCallback: true,
 },
-(accessToken, refreshToken, profile, done) => {
+(req, accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
+    if (!req.user) {
+      mongodb.connect(mongoUrl, (err, db) => {
+        if (err) throw err;
+        const users = db.collection('users');
+        users.findOne({ id: profile.id }, (err, result) => {
+          if (err) throw err;
+          if (!result) {
+            const newUser = { "id": profile.id, "name": profile.name, "polls": [] }
+            users.insertOne(newUser, (err, res) => {
+              return done(null, parsed(newUser));
+              db.close();
+            });
+          } else {
+            return done(null, parsed(result));
+            db.close();
+          }
+        });
+      });
+    } else {
+      return done(null, req.user);
+    };
     function parsed (obj) {
-      console.log("BLEEP");
       return obj;
     };
-    console.log(parsed(profile));
-    mongodb.connect(mongoUrl, (err, db) => {
-      if (err) throw err;
-      const users = db.collection('users');
-      users.findOne({ id: profile.id }, (err, result) => {
-        if (err) throw err;
-        if (!result) {
-          const newUser = { "id": profile.id, "name": profile.displayName, "polls": [] }
-          users.insertOne(newUser, (err, res) => {
-            console.log(parsed(newUser));
-            return parsed(newUser);
-            db.close();
-          });
-        } else {
-          console.log(parsed(result));
-          return parsed(result);
-          db.close();
-        }
-      });
-    });
-  })
+  });
 }));
 
 app.use(partials());
