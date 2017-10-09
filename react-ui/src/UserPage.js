@@ -20,8 +20,8 @@ class UserPage extends Component {
       .then(response => {
         console.log(response);
         this.setState({
-          username: response.json.name,
-          polls: response.json.polls || null,
+          username: response.name,
+          polls: response.polls || null,
         });
       });
   }
