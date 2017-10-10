@@ -50,7 +50,7 @@ class App extends Component {
           </div>
           <Route exact path='/' component={Home} />
           <Route path='/polls' component={Polls} />
-          <Route path='/user' component={UserPage} />
+          <Route exact path='/user' component={UserPage} />
           <Route path='/poll/:id' component={Poll} />
           <Route path='/new' component={New} />
           <p className="App-intro">
