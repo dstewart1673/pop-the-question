@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -48,11 +49,13 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h2><a href='/login'>login</a></h2>
           </div>
-          <Route exact path='/' component={Home} />
-          <Route path='/polls' component={Polls} />
-          <Route exact path='/user' component={UserPage} />
-          <Route path='/poll/:id' component={Poll} />
-          <Route path='/new' component={New} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/polls' component={Polls} />
+            <Route path='/user' component={UserPage} />
+            <Route path='/poll/:id' component={Poll} />
+            <Route path='/new' component={New} />
+          </Switch>
           <p className="App-intro">
             {'This is '}
             <a href="https://github.com/mars/heroku-cra-node">
