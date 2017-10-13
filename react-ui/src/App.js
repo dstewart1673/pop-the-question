@@ -4,7 +4,6 @@ import { BrowserRouter as Router,
   Link,
   Switch
 } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import Home from './Home';
 import Polls from './Polls';
@@ -46,7 +45,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <h2><a href='/login'>login</a></h2>
           </div>
           <Switch>
