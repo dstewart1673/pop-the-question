@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router,
+import {
   Route,
   Link,
   Switch
