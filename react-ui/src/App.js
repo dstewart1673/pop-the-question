@@ -42,29 +42,27 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <div className="App-header">
-            <h2><a href='/login'>login</a></h2>
-          </div>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/polls' component={Polls} />
-            <Route path='/user' component={UserPage} />
-            <Route path='/poll/:id' component={Poll} />
-            <Route path='/new' component={New} />
-          </Switch>
-          <p className="App-intro">
-            {'This is '}
-            <a href="https://github.com/mars/heroku-cra-node">
-              {'create-react-app with a custom Node/Express server'}
-            </a><br/>
-          </p>
-          <p className="App-intro">
-            Hello!
-          </p>
+      <div className="App">
+        <div className="App-header">
+          <h2><a href='/login'>login</a></h2>
         </div>
-      </Router>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/polls' component={Polls} />
+          <Route path='/user' component={UserPage} />
+          <Route path='/poll/:id' component={Poll} />
+          <Route path='/new' component={New} />
+        </Switch>
+        <p className="App-intro">
+          {'This is '}
+          <a href="https://github.com/mars/heroku-cra-node">
+            {'create-react-app with a custom Node/Express server'}
+          </a><br/>
+        </p>
+        <p className="App-intro">
+          Hello!
+        </p>
+      </div>
     );
   }
 }
