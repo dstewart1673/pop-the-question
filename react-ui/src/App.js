@@ -60,9 +60,6 @@ class App extends Component {
             {'create-react-app with a custom Node/Express server'}
           </a><br/>
         </p>
-        <p className="App-intro">
-          Hello!
-        </p>
       </div>
     );
   }
