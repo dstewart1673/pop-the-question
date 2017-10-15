@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
 class UserPage extends Component {
