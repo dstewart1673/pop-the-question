@@ -30,6 +30,7 @@ passport.deserializeUser((id, done) => {
   })
 
 });
+
 //establishes user login and creates new user if not previously logged in
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
@@ -90,8 +91,9 @@ app.get('/api/logout', (req, res) => {
   res.redirect('/');
 });
 
+//TODO:  Make this not create an infinite failure loop.
 app.get('/auth/callback',
-  passport.authenticate('github', { successRedirect: '/user', failureRedirect: '/login' }));
+  passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
 
 //Provides logged-in user's created poll data.
 app.get('/api/user',
@@ -175,8 +177,8 @@ app.get('/api/addOpt',
 
 
 // All remaining requests return the React app, so it can handle routing.
-app.get('/*', function(request, response) {
-  response.sendFile(path.resolve(__dirname, '../react-ui/public', 'index.html'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../react-ui/public', 'index.html'));
 });
 
 app.listen(PORT, function () {
