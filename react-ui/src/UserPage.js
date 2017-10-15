@@ -15,6 +15,7 @@ class UserPage extends Component {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
+        console.log(response.name);
         return response.json;
       })
       .then((json) => {

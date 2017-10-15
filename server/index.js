@@ -186,7 +186,6 @@ app.listen(PORT, function () {
 });
 
 function ensureAuthenticated(req, res, next) {
-  console.log(req.user);
   if (req.isAuthenticated()) {
     return next();
   };
