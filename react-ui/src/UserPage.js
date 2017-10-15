@@ -45,7 +45,7 @@ import React from 'react';
 })}
 */
 
-function UserPage() {
+const UserPage = () => {
   /*fetch('/api/user')
     .then(response => {
       if (!response.ok) {
