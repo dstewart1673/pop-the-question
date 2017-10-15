@@ -1,7 +1,7 @@
 import React from 'react';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
-/*class UserPage extends Component {
+class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,25 +10,24 @@ import React from 'react';
     };
   };
   componentDidMount() {
-    fetch('/api/user')
+    fetch('/api/user', {credentials: 'include'})
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
         return response.json;
       })
-      .then((response) => {
-        console.log(response);
+      .then((json) => {
+        console.log(json);
         this.setState({
-          username: response.name,
-          polls: response.polls || null,
+          username: json.name,
         });
       });
   }
   render() {
     return (
       <div>
-        <h1>Hello!</h1>
+        <h1>Hello, {this.state.username}</h1>
         <h2>Here are your polls:</h2>
         <div><h1>TEST!</h1></div>
       </div>
@@ -43,9 +42,9 @@ import React from 'react';
     </div>
   )
 })}
-*/
 
-const UserPage = () => {
+
+/*const UserPage = () => {
   fetch('/api/user', {credentials: 'include'})
     .then(response => {
       if (!response.ok) {
@@ -60,11 +59,10 @@ const UserPage = () => {
         <div><h1>Hello, {json.name}!</h1></div>
       );
     });
-    /*return (
+    return (
       <div>
         <h1>Hi there!</h1>
       </div>
     )*/
-}
 
 export default UserPage;
