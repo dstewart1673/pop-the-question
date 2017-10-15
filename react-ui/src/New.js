@@ -1,9 +1,9 @@
 import React from 'react';
 
-function New() {
+function NewPoll() {
   return (
     <div><h1>Hi!</h1></div>
   )
 }
 
-export default New;
+export default NewPoll;

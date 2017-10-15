@@ -8,7 +8,7 @@ import Home from './Home';
 import Polls from './Polls';
 import UserPage from './UserPage';
 import Poll from './Poll';
-import New from './New';
+import NewPoll from './New';
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class App extends Component {
           <Route path='/polls' component={Polls} />
           <Route path='/user' component={UserPage} />
           <Route path='/poll/:id' component={Poll} />
-          <Route path='/new' component={New} />
+          <Route path='/new' component={NewPoll} />
         </Switch>
         <p className="App-intro">
           {'This is '}
