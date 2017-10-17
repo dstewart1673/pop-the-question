@@ -12,11 +12,11 @@ class UserPage extends Component {
   componentDidMount() {
     fetch('/api/user', {credentials: 'include'})
       .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
+        if (response.ok) {
+          console.log(JSON.parse(response.json));
+          return response.json;
         }
-        console.log(JSON.parse(response.json));
-        return response.json;
+        throw new Error(`status ${response.status}`);
       })
       .then((json) => {
         console.log(json.name);
