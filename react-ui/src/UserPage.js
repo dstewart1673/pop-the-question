@@ -13,8 +13,7 @@ class UserPage extends Component {
     fetch('/api/user', {credentials: 'include'})
       .then(response => {
         if (response.ok) {
-          console.log(JSON.parse(response.json));
-          return response.json;
+          return response.blob().json;
         }
         throw new Error(`status ${response.status}`);
       })
