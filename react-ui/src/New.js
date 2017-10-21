@@ -23,7 +23,7 @@ class NewPoll extends Component {
   }
 
   handleAddOpt = () => {
-    this.setState({ options: this.state.options.concat([{ opt: '' selected: 0 }])});
+    this.setState({ options: this.state.options.concat([{ opt: '', selected: 0 }])});
   }
 
   handleRemoveOpt = (i) => () => {
