@@ -110,7 +110,7 @@ app.get('/api/user',
     });
   });
 
-//TODO: Make this return only title and descr
+//TODO: Make this return only title, descr, and count of responses
 //Provides list of all polls regardless of login status.
 app.get('/api/polls', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
