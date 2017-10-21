@@ -137,23 +137,26 @@ app.get('/api/poll/:pollID', (req, res) => {
   });
 });
 
-//TODO: Add step to add poll data to user's db entry
 app.get('/api/addpoll',
   ensureAuthenticated,
   (req, res) => {
     const newPoll = {
-      "creator": User.name,
+      "_id": new ObjectID(),
+      "creator": req.user.name,
       "title": req.query.title,
       "options": req.query.options
     }
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
-      const polls = db.collection('polls');
-      polls.insertOne(newPoll, (err, result) => {
-        if (err) throw err;
-        res.redirect('/poll/' + newPoll.id.toString());
-        db.close();
-      });
+      const users = db.collection('users');
+      users.update({ id: req.query.id }, { $push: { polls: [ newPoll._id, newPoll.title ] }}, (err, result) => {
+        const polls = db.collection('polls');
+        polls.insertOne(newPoll, (err, result) => {
+          if (err) throw err;
+          res.redirect('/poll/' + newPoll.id.toString());
+          db.close();
+        });
+      }
     });
   }
 );
@@ -164,7 +167,7 @@ app.get('/api/addOpt',
     mongodb.connect(mongoUrl, (err, db) => {
       if (err) throw err;
       const polls = db.collection('polls');
-      polls.update({ _id: req.query.id }, { $push: { options: { "option": req.query.option, "selections": 0 }}},
+      polls.update({ id: req.query.id }, { $push: { options: { "option": req.query.option, "selections": 0 }}},
       (err, result) => {
         if (err) throw err;
         res.redirect('/poll/' + req.query.id);
