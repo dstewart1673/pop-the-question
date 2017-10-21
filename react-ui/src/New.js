@@ -5,7 +5,7 @@ class NewPoll extends Component {
     super(props);
     this.state = {
       title: '',
-      options: [{ opt: '' selected: 0 }]
+      options: [{ opt: '', selected: 0 }]
     }
   }
 
