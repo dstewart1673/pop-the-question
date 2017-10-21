@@ -156,7 +156,6 @@ app.get('/api/addpoll',
           res.redirect('/poll/' + newPoll.id.toString());
           db.close();
         });
-      }
     });
   }
 );
