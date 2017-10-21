@@ -5,14 +5,14 @@ class NewPoll extends Component {
     super(props);
     this.state = {
       title: '',
-      options: [{ opt: '', selected: 0 }]
-    }
+      options: [{ opt: '', selected: 0, }],
+    };
   }
 
   handleTitleChange = (event) => {
     const newTitle = event.target.value;
     this.setState({ title: newTitle });
-  }
+  };
 
   handleOptChange = (i) => (event) => {
     const newOpt = this.state.options.map((opt, ind) => {
@@ -20,15 +20,15 @@ class NewPoll extends Component {
       return { opt: event.target.value, selected: 0 };
     });
     this.setState({ options: newOpt });
-  }
+  };
 
   handleAddOpt = () => {
-    this.setState({ options: this.state.options.concat([{ opt: '', selected: 0 }])});
-  }
+    this.setState({ options: this.state.options.concat([{ opt: '', selected: 0 }]) });
+  };
 
   handleRemoveOpt = (i) => () => {
-    this.setState({ options: this.state.options.filter(( val, ind ) => ( i !== ind ))});
-  }
+    this.setState({ options: this.state.options.filter((val, ind) => (i !== ind)) });
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -38,18 +38,19 @@ class NewPoll extends Component {
       method: 'POST',
       body: data,
     });
-  }
+  };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='title'>Title</label>
         <input id='title' name='title' type='text' onChange={this.handleTitleChange()}/>
-        {this.state.options.map(( option, i ) => {
+        {this.state.options.map((option, i) => {
           <div>
-            <input type='text' placeholder='New Option' value={option.opt} onChange={this.handleOptChange(i)} />
+            <input type='text' placeholder='New Option' value={option.opt}
+              onChange={this.handleOptChange(i)} />
             <button type='button' onClick={this.handleRemoveOpt(i)}>Remove Option</button>
-          </div>
+          </div>;
         })}
         <button type='button' onClick={this.handleAddOpt}>Add Option</button>
         <button>Submit!</button>

@@ -6,30 +6,31 @@ class UserPage extends Component {
     super(props);
     this.state = {
       username: 'User',
-      polls: ''
+      polls: '',
     };
   };
+
   componentDidMount() {
-    fetch('/api/user', {credentials: 'include'})
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(`status ${response.status}`);
-      })
-      .then((json) => {
-        console.log(json.name);
-        this.setState({
-          username: json.name,
-        });
-      });
+    fetch('/api/user', { credentials: 'include' }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+
+      throw new Error(`status ${response.status}`);
+    }).then((json) => {
+      console.log(json.name);
+      this.setState({ username: json.name });
+    });
   }
+
   render() {
     return (
       <div>
         <h1>Hello, {this.state.username}</h1>
         <h2>Here are your polls:</h2>
-        <div><h1>TEST!</h1></div>
+        <div>
+          <h1>TEST!</h1>
+        </div>
       </div>
     );
   }
