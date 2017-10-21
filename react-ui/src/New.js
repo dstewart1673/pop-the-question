@@ -54,7 +54,7 @@ class NewPoll extends Component {
         <button type='button' onClick={this.handleAddOpt}>Add Option</button>
         <button>Submit!</button>
       </form>
-    )
+    );
   }
 }
 

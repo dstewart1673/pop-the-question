@@ -35,34 +35,4 @@ class UserPage extends Component {
   }
 }
 
-/*{this.state.polls.map((poll, index) => {
-  return (
-    <div>
-      <p>Hi!</p>
-    </div>
-  )
-})}
-
-
-/*const UserPage = () => {
-  fetch('/api/user', {credentials: 'include'})
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`status ${response.status}`);
-      }
-      console.log(response);
-      return response.json;
-    })
-    .then((json) => {
-      console.log(json);
-      return (
-        <div><h1>Hello, {json.name}!</h1></div>
-      );
-    });
-    return (
-      <div>
-        <h1>Hi there!</h1>
-      </div>
-    )*/
-
 export default UserPage;

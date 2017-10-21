@@ -27,8 +27,7 @@ passport.deserializeUser((id, done) => {
       done(err, user);
       db.close();
     });
-  })
-
+  });
 });
 
 //establishes user login and creates new user if not previously logged in
