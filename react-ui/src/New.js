@@ -50,7 +50,7 @@ class NewPoll extends Component {
             <input type='text' placeholder='New Option' value={option.opt}
               onChange={this.handleOptChange(i)} />
             <button type='button' onClick={this.handleRemoveOpt(i)}>Remove Option</button>
-          </div>;
+          </div>
         })}
         <button type='button' onClick={this.handleAddOpt}>Add Option</button>
         <button>Submit!</button>
