@@ -10,8 +10,7 @@ class NewPoll extends Component {
   }
 
   handleTitleChange = (evt) => {
-    const newTitle = evt.target.value;
-    this.setState({ title: newTitle });
+    this.setState({ title: evt.target.value });
   };
 
   handleOptChange = (i) => (evt) => {
@@ -44,7 +43,7 @@ class NewPoll extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='title'>Title</label>
-        <input id='title' name='title' type='text' onChange={this.handleTitleChange()}/>
+        <input id='title' name='title' type='text' onChange={this.handleTitleChange}/>
         {this.state.options.map((option, i) => {
           <div>
             <input type='text' placeholder='New Option' value={option.opt}
