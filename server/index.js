@@ -217,5 +217,6 @@ function ensureAuthenticated(req, res, next) {
     return next();
   };
 
+  console.log('FAILED');
   res.redirect(403, '/');
 }
