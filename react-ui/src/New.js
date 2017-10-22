@@ -9,15 +9,15 @@ class NewPoll extends Component {
     };
   }
 
-  handleTitleChange = (event) => {
-    const newTitle = event.target.value;
+  handleTitleChange = (evt) => {
+    const newTitle = evt.target.value;
     this.setState({ title: newTitle });
   };
 
-  handleOptChange = (i) => (event) => {
+  handleOptChange = (i) => (evt) => {
     const newOpt = this.state.options.map((opt, ind) => {
       if (i !== ind) return opt;
-      return { opt: event.target.value, selected: 0 };
+      return { opt: evt.target.value, selected: 0 };
     });
     this.setState({ options: newOpt });
   };
@@ -30,8 +30,8 @@ class NewPoll extends Component {
     this.setState({ options: this.state.options.filter((val, ind) => (i !== ind)) });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (evt) => {
+    evt.preventDefault();
     const data = this.state;
 
     fetch('/api/newpoll', {
