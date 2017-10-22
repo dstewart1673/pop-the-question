@@ -154,7 +154,7 @@ app.get('/api/poll/:pollID', (req, res) => {
   });
 });
 
-app.get('/api/addpoll', ensureAuthenticated, (req, res) => {
+app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   const newPoll = {
     _id: new ObjectID(),
     creator: req.user.name,
