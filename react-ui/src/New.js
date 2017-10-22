@@ -44,13 +44,13 @@ class NewPoll extends Component {
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='title'>Title</label>
         <input id='title' name='title' type='text' onChange={this.handleTitleChange}/>
-        {this.state.options.map((option, i) => {
+        {this.state.options.map((option, i) => (
           <div>
             <input type='text' placeholder='New Option' value={option.opt}
               onChange={this.handleOptChange(i)} />
             <button type='button' onClick={this.handleRemoveOpt(i)}>Remove Option</button>
           </div>
-        })}
+        ))}
         <button type='button' onClick={this.handleAddOpt}>Add Option</button>
         <button>Submit!</button>
       </form>
