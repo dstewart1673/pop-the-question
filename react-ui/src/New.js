@@ -33,7 +33,7 @@ class NewPoll extends Component {
     evt.preventDefault();
     const data = this.state;
 
-    fetch('/api/newpoll', {
+    fetch('/api/addpoll', {
       method: 'POST',
       body: data,
     });
