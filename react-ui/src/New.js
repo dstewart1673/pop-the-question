@@ -6,6 +6,7 @@ class NewPoll extends Component {
     this.state = {
       title: '',
       options: [{ opt: '', selected: 0, }],
+      pollCreated: '',
     };
   }
 
@@ -31,11 +32,23 @@ class NewPoll extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    const data = this.state;
+    const data = {
+      title: this.state.title,
+      options: this.state.options,
+    };
 
     fetch('/api/addpoll', {
       method: 'POST',
       body: data,
+    }).then((response) => {
+      if (response.ok) {
+        return response.json;
+      };
+
+      throw new Error(`status ${response.status}`);
+    }).then((json) => {
+      console.log(json);
+      this.setState({ pollCreated: json.id });
     });
   };
 

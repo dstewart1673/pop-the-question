@@ -18,7 +18,6 @@ class UserPage extends Component {
 
       throw new Error(`status ${response.status}`);
     }).then((json) => {
-      console.log(json.name);
       this.setState({ username: json.name });
     });
   }
