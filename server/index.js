@@ -145,7 +145,7 @@ app.get('/api/poll/:pollID', (req, res) => {
       throw err;
     const polls = db.collection('polls');
     polls.findOne({
-      _id: req.params.pollID,
+      _id: ObjectID(req.params.pollID),
     }, (err, result) => {
       if (err) throw err;
       console.log(result);
