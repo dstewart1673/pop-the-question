@@ -156,7 +156,6 @@ app.get('/api/poll/:pollID', (req, res) => {
 
 app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   const newPoll = {
-    _id: new ObjectID(),
     creator: req.user.name,
     title: req.query.title,
     options: req.query.options,
@@ -174,7 +173,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
       const polls = db.collection('polls');
       polls.insertOne(newPoll, (err, result) => {
         if (err) throw err;
-        res.send(JSON.stringify(newPoll.id));
+        res.send(JSON.stringify(newPoll._id));
         db.close();
       });
     });
