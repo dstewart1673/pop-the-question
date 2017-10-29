@@ -161,6 +161,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
     options: req.body.options,
   };
   console.log(req.body);
+  console.log(req.query);
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const users = db.collection('users');
@@ -176,7 +177,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
       polls.insertOne(newPoll, (err, result) => {
         if (err) throw err;
         console.log(newPoll._id);
-        res.send({ id: newPoll._id });
+        res.send(JSON.stringify({ id: newPoll._id }));
         db.close();
       });
     });
