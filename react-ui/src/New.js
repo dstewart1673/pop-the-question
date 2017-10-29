@@ -69,7 +69,7 @@ class NewPoll extends Component {
           <button type='button' onClick={this.handleAddOpt}>Add Option</button>
           <button>Submit!</button>
         </form>
-        {(this.state.pollCreated === '' ? <h1>click to submit</h1> : <Link to={ '/api/poll/' + this.state.pollCreated })}
+        {(this.state.pollCreated === '') ? <h1>click to submit</h1> : <Link to={ '/api/poll/' + this.state.pollCreated }>Here!</Link>}
       </div>
     );
   }
