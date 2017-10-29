@@ -8,7 +8,7 @@ class UserPage extends Component {
       username: 'User',
       polls: '',
     };
-  };
+  }
 
   componentDidMount() {
     fetch('/api/user', { credentials: 'include' }).then(response => {

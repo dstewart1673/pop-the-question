@@ -9,7 +9,7 @@ class NewPoll extends Component {
       options: [{ opt: '', selected: 0, }],
       pollCreated: '',
     };
-  }
+  };
 
   handleTitleChange = (evt) => {
     this.setState({ title: evt.target.value });
@@ -49,8 +49,8 @@ class NewPoll extends Component {
 
       throw new Error(`status ${response.status}`);
     }).then((json) => {
-      console.log(json);
-      this.setState({ pollCreated: json._id });
+      console.log(json.id);
+      this.setState({ pollCreated: json.id });
     });
   };
 
