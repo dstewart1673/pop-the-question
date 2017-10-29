@@ -15,8 +15,9 @@ class Poll extends Component {
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
-        }
+        };
 
+        console.log(response.json);
         return response.json;
       })
       .then(json => {
