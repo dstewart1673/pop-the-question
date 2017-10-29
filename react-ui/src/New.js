@@ -49,7 +49,7 @@ class NewPoll extends Component {
 
       throw new Error(`status ${response.status}`);
     }).then((json) => {
-      console.log(json._id);
+      console.log(JSON.parse(json));
       this.setState({ pollCreated: json._id });
     });
   };
@@ -70,7 +70,7 @@ class NewPoll extends Component {
           <button type='button' onClick={this.handleAddOpt}>Add Option</button>
           <button>Submit!</button>
         </form>
-        {(this.state.pollCreated === '') ? <h1>click to submit</h1> : <Link to={ '/api/poll/' + this.state.pollCreated }>Here!</Link>}
+        {(this.state.pollCreated === '') ? <h1>click to submit</h1> : <Link to={ '/poll/' + this.state.pollCreated }>Here!</Link>}
       </div>
     );
   }

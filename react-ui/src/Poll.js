@@ -7,15 +7,17 @@ class Poll extends Component {
       title: '',
       desc: '',
       creator: '',
-      options: []
+      options: [],
     };
   }
+
   componentDidMount() {
     fetch('/api/poll/' + this.props.pollNum)
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
+
         return response.json;
       })
       .then(json => {
@@ -23,10 +25,11 @@ class Poll extends Component {
           title: json.title,
           desc: json.desc,
           creator: json.creator,
-          options: json.options
+          options: json.options,
         });
       });
   }
+
   componentDidUpdate() {
     //TODO: add refresh of poll data here
   }
@@ -39,14 +42,10 @@ class Poll extends Component {
         <h2>{this.state.desc}</h2>
         <h2>A poll by {this.state.creator}.</h2>
         <div>
-          {this.state.options.map((option, index) => {
-            return (
-              <p>hello!</p>
-            )
-          })}
+          {this.state.options.map((option, index) => (<p>hello!</p>))}
         </div>
       </div>
-    )
+    );
   }
 }
 
