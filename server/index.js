@@ -157,10 +157,10 @@ app.get('/api/poll/:pollID', (req, res) => {
 app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   const newPoll = {
     creator: req.user.name,
-    title: req.query.title,
-    options: req.query.options,
+    title: req.body.title,
+    options: req.body.options,
   };
-  console.log(req.query);
+  console.log(req.body);
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const users = db.collection('users');
