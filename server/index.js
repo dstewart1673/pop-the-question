@@ -221,5 +221,5 @@ function ensureAuthenticated(req, res, next) {
   };
 
   console.log('FAILED');
-  res.redirect(403, '/');
+  res.status(403).end();
 }

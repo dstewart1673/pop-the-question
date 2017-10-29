@@ -19,12 +19,24 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch('/api/user', { credentials: 'include' }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    }).then((json) => {
+      this.setState({
+        user: json.name,
+      });
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h2><a href='/login'>login</a></h2>
-          <h2><Link to='/user'>USER</Link></h2>
+          {(this.state.user) ? <h2><Link to='/user'>{this.state.user}</Link></h2> : <h1>Hello!</h1>}
           <h2><Link to='/new'>NEW</Link></h2>
         </div>
         <Switch>
@@ -34,12 +46,7 @@ class App extends Component {
           <Route path='/poll/:id' component={Poll} />
           <Route path='/new' component={NewPoll} />
         </Switch>
-        <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
+
       </div>
     );
   }

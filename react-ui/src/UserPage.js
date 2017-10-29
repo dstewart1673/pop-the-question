@@ -16,9 +16,12 @@ class UserPage extends Component {
         return response.json();
       }
 
-      throw new Error(`status ${response.status}`);
+      throw new Error('Login First!');
     }).then((json) => {
-      this.setState({ username: json.name });
+      this.setState({
+        username: json.name,
+        polls: json.polls,
+      });
     });
   }
 
@@ -28,7 +31,9 @@ class UserPage extends Component {
         <h1>Hello, {this.state.username}</h1>
         <h2>Here are your polls:</h2>
         <div>
-          <h1>TEST!</h1>
+          {this.state.polls.map((poll) => (
+            <h1>{poll.name}</h1>
+          ))}
         </div>
       </div>
     );
