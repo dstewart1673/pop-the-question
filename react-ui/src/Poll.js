@@ -6,7 +6,7 @@ class Poll extends Component {
     this.state = {
       title: '',
       creator: '',
-      options: [],
+      options: ["loading!"],
     };
   }
 
