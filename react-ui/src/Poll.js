@@ -42,7 +42,7 @@ class Poll extends Component {
           {
             (this.state.options === []) ?
             <h1>LOADING!</h1>
-            : this.state.options.map((option) => (<p>{ option }</p>))
+            : this.state.options.map((option) => (<p>{ option.opt }</p>))
         }
         </div>
       </div>
