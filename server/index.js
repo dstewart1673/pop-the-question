@@ -148,7 +148,8 @@ app.get('/api/poll/:pollID', (req, res) => {
       _id: req.params.pollID,
     }, (err, result) => {
       if (err) throw err;
-      res.send(result);
+      console.log(result);
+      res.send(JSON.stringify(result));
       db.close();
     });
   });
@@ -175,7 +176,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
       polls.insertOne(newPoll, (err, result) => {
         if (err) throw err;
         console.log(newPoll._id);
-        res.send({ id: newPoll._id });
+        res.send(JSON.stringify({ id: newPoll._id }));
         db.close();
       });
     });
