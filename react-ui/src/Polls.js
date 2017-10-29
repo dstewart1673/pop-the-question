@@ -27,7 +27,7 @@ class Polls extends Component {
   render() {
     return (
       <div>
-        {this.props.polls.map((poll, index) => (
+        {this.state.polls.map((poll, index) => (
             <div>
               <p>{poll.title}</p>
             </div>
