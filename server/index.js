@@ -160,6 +160,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
     title: req.query.title,
     options: req.query.options,
   };
+  console.log(req.query);
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const users = db.collection('users');
