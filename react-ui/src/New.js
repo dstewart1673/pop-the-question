@@ -48,7 +48,7 @@ class NewPoll extends Component {
       credentials: 'include',
     }).then((response) => {
       if (response.ok) {
-        return response.json;
+        return response.json();
       };
 
       throw new Error(`status ${response.status}`);

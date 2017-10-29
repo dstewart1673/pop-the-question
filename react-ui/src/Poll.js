@@ -17,8 +17,7 @@ class Poll extends Component {
           throw new Error(`status ${response.status}`);
         };
 
-        console.log(response.json);
-        return response.json;
+        return response.json();
       })
       .then(json => {
         this.setState({
