@@ -37,7 +37,7 @@ class NewPoll extends Component {
       title: this.state.title,
       options: this.state.options,
     };
-
+    console.log(data);
     fetch('/api/addpoll', {
       method: 'POST',
       body: data,
@@ -70,7 +70,9 @@ class NewPoll extends Component {
           <button type='button' onClick={this.handleAddOpt}>Add Option</button>
           <button>Submit!</button>
         </form>
-        {(this.state.pollCreated === '') ? <h1>click to submit</h1> : <Link to={ '/poll/' + this.state.pollCreated }>Here!</Link>}
+        {(this.state.pollCreated === '') ?
+          <h1>click to submit</h1>
+          : <Link to={ '/poll/' + this.state.pollCreated }>Here!</Link>}
       </div>
     );
   }
