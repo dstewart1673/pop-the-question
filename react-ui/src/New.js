@@ -41,9 +41,10 @@ class NewPoll extends Component {
     fetch('/api/addpoll', {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: data,
+      body: JSON.stringify(data),
       credentials: 'include',
     }).then((response) => {
       if (response.ok) {
