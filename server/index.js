@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const partials = require('express-partials');
 const mongodb = require('mongodb');
+const ObjectID = require('mongodb').ObjectID;
 const MongoClient = mongodb.MongoClient;
 const mongoUrl = process.env.MONGOLAB_URI;
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
