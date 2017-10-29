@@ -49,8 +49,8 @@ class NewPoll extends Component {
 
       throw new Error(`status ${response.status}`);
     }).then((json) => {
-      console.log(json);
-      this.setState({ pollCreated: json.id });
+      console.log(json._id);
+      this.setState({ pollCreated: json._id });
     });
   };
 
