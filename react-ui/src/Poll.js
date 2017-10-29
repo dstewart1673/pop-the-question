@@ -5,14 +5,13 @@ class Poll extends Component {
     super(props);
     this.state = {
       title: '',
-      desc: '',
       creator: '',
       options: [],
     };
   }
 
   componentDidMount() {
-    fetch('/api/poll/' + this.props.pollNum)
+    fetch('/api/poll/' + props.match.params.id)
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
@@ -23,7 +22,6 @@ class Poll extends Component {
       .then(json => {
         this.setState({
           title: json.title,
-          desc: json.desc,
           creator: json.creator,
           options: json.options,
         });
@@ -42,7 +40,7 @@ class Poll extends Component {
         <h2>{this.state.desc}</h2>
         <h2>A poll by {this.state.creator}.</h2>
         <div>
-          {this.state.options.map((option, index) => (<p>hello!</p>))}
+          {this.state.options.map((option, index) => (<p>{ option }</p>))}
         </div>
       </div>
     );
