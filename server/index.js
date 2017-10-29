@@ -173,7 +173,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
       const polls = db.collection('polls');
       polls.insertOne(newPoll, (err, result) => {
         if (err) throw err;
-        res.send(JSON.stringify(newPoll._id));
+        res.send(JSON.stringify(newPoll));
         db.close();
       });
     });
