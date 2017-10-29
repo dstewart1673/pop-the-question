@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class NewPoll extends Component {
   constructor(props) {
@@ -54,19 +55,22 @@ class NewPoll extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor='title'>Title</label>
-        <input id='title' name='title' type='text' onChange={this.handleTitleChange}/>
-        {this.state.options.map((option, i) => (
-          <div>
-            <input type='text' placeholder='New Option' value={option.opt}
-              onChange={this.handleOptChange(i)} />
-            <button type='button' onClick={this.handleRemoveOpt(i)}>Remove Option</button>
-          </div>
-        ))}
-        <button type='button' onClick={this.handleAddOpt}>Add Option</button>
-        <button>Submit!</button>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor='title'>Title</label>
+          <input id='title' name='title' type='text' onChange={this.handleTitleChange}/>
+          {this.state.options.map((option, i) => (
+            <div>
+              <input type='text' placeholder='New Option' value={option.opt}
+                onChange={this.handleOptChange(i)} />
+              <button type='button' onClick={this.handleRemoveOpt(i)}>Remove Option</button>
+            </div>
+          ))}
+          <button type='button' onClick={this.handleAddOpt}>Add Option</button>
+          <button>Submit!</button>
+        </form>
+        {(this.state.pollCreated === '' ? <h1>click to submit</h1> : <Link to={ '/api/poll/' + this.state.pollCreated })}
+      </div>
     );
   }
 }
