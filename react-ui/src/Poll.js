@@ -40,7 +40,11 @@ class Poll extends Component {
         <h2>{this.state.desc}</h2>
         <h2>A poll by {this.state.creator}.</h2>
         <div>
-          {this.state.options.map((option, index) => (<p>{ option }</p>))}
+          {
+            (this.state.options.length !== 0) ?
+            this.state.options.map((option, index) => (<p>{ option }</p>))
+            : <h1>LOADING!</h1>
+        }
         </div>
       </div>
     );
