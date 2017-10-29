@@ -164,15 +164,17 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
     if (err) throw err;
     const users = db.collection('users');
     users.update({
-      id: req.query.id,
+      id: req.user.id,
     }, {
       $push: {
         polls: [newPoll._id, newPoll.title],
       },
     }, (err, result) => {
+      if (err) throw err;
       const polls = db.collection('polls');
       polls.insertOne(newPoll, (err, result) => {
         if (err) throw err;
+        console.log(newPoll._id);
         res.send({ id: newPoll._id });
         db.close();
       });
