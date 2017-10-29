@@ -11,7 +11,7 @@ class Poll extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/poll/' + props.match.params.id)
+    fetch('/api/poll/' + this.props.match.params.id)
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
