@@ -29,7 +29,7 @@ class Polls extends Component {
       <div>
         {this.state.polls.map((poll, index) => (
             <div>
-              <p>{poll.title}</p>
+              <h1>{ poll.title + ' created by ' + poll.creator }</h1>
             </div>
         ))}
       </div>
