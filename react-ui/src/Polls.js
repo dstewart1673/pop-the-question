@@ -4,36 +4,36 @@ class Polls extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      polls: []
+      polls: ['LOADING!'],
     };
   }
+
   componentDidMount() {
     fetch('/api/polls')
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
-        return response.json;
+
+        return response.json();
       })
       .then(json => {
         this.setState({
-          polls: json
+          polls: json,
         });
       });
   }
+
   render() {
     return (
       <div>
-        {this.props.polls.map((poll, index) => {
-          return (
+        {this.props.polls.map((poll, index) => (
             <div>
               <p>{poll.title}</p>
-              <p>{poll.desc}</p>
             </div>
-          )
-        })}
+        ))}
       </div>
-    )
+    );
   }
 }
 
