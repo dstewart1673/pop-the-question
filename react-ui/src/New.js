@@ -41,6 +41,7 @@ class NewPoll extends Component {
     fetch('/api/addpoll', {
       method: 'POST',
       body: data,
+      credentials: include,
     }).then((response) => {
       if (response.ok) {
         return response.json;
