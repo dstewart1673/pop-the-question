@@ -6,7 +6,7 @@ class Poll extends Component {
     this.state = {
       title: '',
       creator: '',
-      options: ["loading!"],
+      options: ['loading!'],
     };
   }
 
@@ -40,9 +40,9 @@ class Poll extends Component {
         <h2>A poll by {this.state.creator}.</h2>
         <div>
           {
-            (this.state.options !== []) ?
-            this.state.options.map((option) => (<p>{ option }</p>))
-            : <h1>LOADING!</h1>
+            (this.state.options === []) ?
+            <h1>LOADING!</h1>
+            : this.state.options.map((option) => (<p>{ option }</p>))
         }
         </div>
       </div>
