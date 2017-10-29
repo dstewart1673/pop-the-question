@@ -32,7 +32,7 @@ class Poll extends Component {
     //TODO: add refresh of poll data here
   }
 
-  //TODO: Add "add option" functionality
+  //TODO: Add "add option" functionality somewhere
   render() {
     return (
       <div>
