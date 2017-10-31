@@ -32,7 +32,7 @@ class UserPage extends Component {
         <h2>Here are your polls:</h2>
         <div>
           {this.state.polls.map((poll) => (
-            <h1>{poll.name}</h1>
+            <h1>{poll.title}</h1>
           ))}
         </div>
       </div>
