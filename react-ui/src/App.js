@@ -24,6 +24,10 @@ class App extends Component {
     fetch('/api/user', { credentials: 'include' }).then(response => {
       if (response.ok) {
         return response.json();
+      } else {
+        return ({
+          name: null,
+        });
       }
     }).then((json) => {
       this.setState({
