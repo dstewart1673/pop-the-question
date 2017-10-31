@@ -11,6 +11,7 @@ import UserPage from './UserPage';
 import Poll from './Poll';
 import NewPoll from './New';
 import LoggedInHeader from './LoggedInHeader';
+import UnloggedHeader from './UnloggedHeader';
 
 class App extends Component {
   constructor(props) {
@@ -39,8 +40,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2><a href='/login'>login</a></h2>
-          {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <h1>Hello!</h1>}
-          <h2><Link to='/new'>NEW</Link></h2>
+          {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <UnloggedHeader />}
         </div>
         <Switch>
           <Route exact path='/' component={Home} />
