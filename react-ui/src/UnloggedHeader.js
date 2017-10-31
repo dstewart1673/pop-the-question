@@ -14,3 +14,5 @@ class UnloggedHeader extends Component {
     );
   }
 }
+
+export default UnloggedHeader;
