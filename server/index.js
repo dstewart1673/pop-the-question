@@ -95,7 +95,7 @@ app.get('/login', passport.authenticate('github'), (req, res) => {
   //client is sent to GitHub, so this is not used.
 });
 
-app.get('/api/logout', (req, res) => {
+app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
