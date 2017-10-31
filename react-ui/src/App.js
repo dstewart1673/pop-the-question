@@ -25,9 +25,7 @@ class App extends Component {
       if (response.ok) {
         return response.json();
       } else {
-        return ({
-          name: null,
-        });
+        return { name: null };
       }
     }).then((json) => {
       this.setState({

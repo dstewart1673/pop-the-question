@@ -19,3 +19,5 @@ class LoggedInHeader extends Component {
     );
   }
 }
+
+export default LoggedInHeader;
