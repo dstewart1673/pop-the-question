@@ -6,7 +6,7 @@ class UserPage extends Component {
     super(props);
     this.state = {
       username: 'User',
-      polls: '',
+      polls: [],
     };
   }
 
