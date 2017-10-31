@@ -100,7 +100,6 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-//TODO:  Make this not create an infinite failure loop.
 app.get('/auth/callback', passport.authenticate('github', {
   successRedirect: '/',
   failureRedirect: '/login',
