@@ -1,4 +1,7 @@
 .poll-block {
   background-color: #C0C0C0;
   border-color: black;
+  border-radius: 5px;
+  border-width: thin;
+  margin: 5px;
 }
