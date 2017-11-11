@@ -172,7 +172,7 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
         id: req.user.id,
       }, {
         $push: {
-          polls: [newPoll._id, newPoll.title],
+          polls: { _id: newPoll._id, title: newPoll.title },
         },
       }, (err, result) => {
         res.send(JSON.stringify({ id: newPoll._id }));
