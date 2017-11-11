@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import './Polls.css';
 
 class Polls extends Component {
   constructor(props) {
@@ -30,9 +31,14 @@ class Polls extends Component {
       <div>
         <Grid>
           <Row>
+            <Col xs={12}>
+              <p>Check out some of the polls our community has started!</p>
+            </Col>
+          </Row>
+          <Row>
             <Col xs={12} md={8} mdOffset={2}>
               {this.state.polls.map((poll, index) => (
-                  <div>
+                  <div class='poll-list-item'>
                     <h1>{ poll.title + ' created by ' + poll.creator }</h1>
                   </div>
               ))}
