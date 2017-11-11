@@ -32,15 +32,27 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, {this.state.username}</h1>
-        <h2>Here are your polls:</h2>
-        <div>
-          {this.state.polls.map((poll) => (
-            <div class='poll-block'>
-              <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
-            </div>
-          ))}
-        </div>
+        <Grid>
+          <Row>
+            <Col xs={12} md={10} mdOffset={1}>
+              <h1>Hello, {this.state.username}</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={10} mdOffset={1}>
+              <h2>Here are your polls:</h2>
+            </Col>
+          </Row>
+          <div>
+            {this.state.polls.map((poll) => (
+              <Row>
+                <Col xs={12} md={8} mdOffset={2} class='poll-block'>
+                  <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+                </Col>
+              </Row>
+            ))}
+          </div>
+        </Grid>
       </div>
     );
   }
