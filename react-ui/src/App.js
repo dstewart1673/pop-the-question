@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Grid>
+          <Grid fluid={true}>
             <Row>
               {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <UnloggedHeader />}
             </Row>

@@ -12,7 +12,7 @@ class LoggedInHeader extends Component {
 
   render() {
     return (
-      <Col xs={3} xsOffset={9} md={1} mdOffset={11}>
+      <Col xs={3} xsOffset={9} md={2} mdOffset={10}>
         <Link to='/new'><button class='newPoll'>+</button></Link>
         <Link to='/user'><button class='profile'>Profile</button></Link>
         <a href='/logout'><button class='logout'>Logout</button></a>

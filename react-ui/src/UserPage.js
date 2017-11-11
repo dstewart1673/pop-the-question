@@ -34,7 +34,7 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <Grid>
+        <Grid fluid={true}>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
               <h1>Hello, {this.state.username}</h1>
