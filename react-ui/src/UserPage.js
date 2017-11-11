@@ -23,6 +23,7 @@ class UserPage extends Component {
 
       throw new Error('Login First!');
     }).then((json) => {
+      console.log(json.polls);
       this.setState({
         username: json.name,
         polls: json.polls,
