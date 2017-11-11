@@ -41,12 +41,12 @@ class UserPage extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={10} mdOffset={1} className='name-block'>
+            <Col xs={12} md={10} mdOffset={1}>
               <h2>Here are your polls:</h2>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={8} mdOffset={3}>
+            <Col xs={12} md={8} mdOffset={2}>
               {this.state.polls.map((poll) => (
                 <Grid fluid={true}>
                   <Row>
