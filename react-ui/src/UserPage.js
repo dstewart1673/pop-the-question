@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './UserPage.css';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
 class UserPage extends Component {
@@ -32,7 +34,9 @@ class UserPage extends Component {
         <h2>Here are your polls:</h2>
         <div>
           {this.state.polls.map((poll) => (
-            <h1>{poll.title}</h1>
+            <div class='poll-block'>
+              <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+            </div>
           ))}
         </div>
       </div>

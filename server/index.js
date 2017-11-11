@@ -183,6 +183,13 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   });
 });
 
+/*app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
+  mongodb.connect(mongoUrl, (err, db) => {
+    if (err) throw err;
+    const
+  })
+})*/
+
 app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
