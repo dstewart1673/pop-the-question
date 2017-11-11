@@ -37,11 +37,11 @@ class UserPage extends Component {
         <Grid fluid={true}>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
-              <h1>Hello, {this.state.username}</h1>
+              <h1>Hello {this.state.username}!</h1>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={10} mdOffset={1}>
+            <Col xs={12} md={10} mdOffset={1} className='name-block'>
               <h2>Here are your polls:</h2>
             </Col>
           </Row>
