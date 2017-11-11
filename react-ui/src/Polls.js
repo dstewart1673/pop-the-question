@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Polls extends Component {
   constructor(props) {
@@ -27,11 +28,17 @@ class Polls extends Component {
   render() {
     return (
       <div>
-        {this.state.polls.map((poll, index) => (
-            <div>
-              <h1>{ poll.title + ' created by ' + poll.creator }</h1>
-            </div>
-        ))}
+        <Grid>
+          <Row>
+            <Col xs={12} md={8} mdOffset={2}>
+              {this.state.polls.map((poll, index) => (
+                  <div>
+                    <h1>{ poll.title + ' created by ' + poll.creator }</h1>
+                  </div>
+              ))}
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
