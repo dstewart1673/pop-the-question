@@ -16,7 +16,7 @@ class UnloggedHeader extends Component {
               <a href='/login'><button class='login'>Log In</button></a>
             </Col>
           </Row>
-        <Grid>
+        </Grid>
       </div>
     );
   }
