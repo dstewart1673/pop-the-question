@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
 
 class LoggedInHeader extends Component {
   constructor(props) {
@@ -11,11 +12,11 @@ class LoggedInHeader extends Component {
 
   render() {
     return (
-      <div>
+      <Col xs={3} xsOffset={9} md={2} mdOffset={10}>
         <Link to='/new'><button class='newPoll'>+</button></Link>
         <Link to='/user'><button class='profile'>Profile</button></Link>
         <a href='/logout'><button class='logout'>Logout</button></a>
-      </div>
+      </Col>
     );
   }
 }

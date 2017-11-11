@@ -48,8 +48,8 @@ class UserPage extends Component {
           <div>
             {this.state.polls.map((poll) => (
               <Row>
-                <Col xs={12} md={8} mdOffset={2}>
-                  <Link to={ '/poll/' + poll._id } class='poll-block'><h1>{poll.title}</h1></Link>
+                <Col xs={12} md={8} mdOffset={2} bsClass='poll-block'>
+                  <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
                 </Col>
               </Row>
             ))}

@@ -9,11 +9,9 @@ class UnloggedHeader extends Component {
 
   render() {
     return (
-      <div>
-        <Col xs={3} xsOffset={9} md={1} mdOffset={11}>
-          <a href='/login'><button class='login'>Log In</button></a>
-        </Col>
-      </div>
+      <Col xs={3} xsOffset={9} md={1} mdOffset={11}>
+        <a href='/login'><button class='login'>Log In</button></a>
+      </Col>
     );
   }
 }
