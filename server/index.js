@@ -163,19 +163,18 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   };
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
-    const users = db.collection('users');
-    users.update({
-      id: req.user.id,
-    }, {
-      $push: {
-        polls: [newPoll._id, newPoll.title],
-      },
-    }, (err, result) => {
+    const polls = db.collection('polls');
+    polls.insertOne(newPoll, (err, result) => {
       if (err) throw err;
-      const polls = db.collection('polls');
-      polls.insertOne(newPoll, (err, result) => {
-        if (err) throw err;
-        console.log(newPoll._id);
+      console.log(newPoll._id);
+      const users = db.collection('users');
+      users.update({
+        id: req.user.id,
+      }, {
+        $push: {
+          polls: [newPoll._id, newPoll.title],
+        },
+      }, (err, result) => {
         res.send(JSON.stringify({ id: newPoll._id }));
         db.close();
       });

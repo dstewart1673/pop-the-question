@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
+
+//import { Link } from 'react-router-dom';
 import './UserPage.css';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
