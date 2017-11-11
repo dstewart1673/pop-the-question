@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
+import { Grid, Row } from 'react-bootstrap';
 import './App.css';
 import Home from './Home';
 import Polls from './Polls';
@@ -39,7 +36,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <UnloggedHeader />}
+          <Grid>
+            <Row>
+              {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <UnloggedHeader />}
+            </Row>
+          </Grid>
         </div>
         <Switch>
           <Route exact path='/' component={Home} />
