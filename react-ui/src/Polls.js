@@ -38,7 +38,7 @@ class Polls extends Component {
           <Row>
             <Col xs={12} md={8} mdOffset={2}>
               {this.state.polls.map((poll, index) => (
-                  <div class='poll-list-item'>
+                  <div className='poll-list-item'>
                     <h1>{ poll.title + ' created by ' + poll.creator }</h1>
                   </div>
               ))}
