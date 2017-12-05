@@ -211,7 +211,7 @@ app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
   });
 });
 
-app.get('/api/vote', (req, res) => {
+app.post('/api/vote', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const polls = db.collection('polls');
