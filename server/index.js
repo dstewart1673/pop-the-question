@@ -211,6 +211,35 @@ app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
   });
 });
 
+app.get('/api/vote', (req, res) => {
+  mongodb.connect(mongoUrl, (err, db) => {
+    if (err) throw err;
+    const polls = db.collection('polls');
+    const selectedPoll = polls.findOne({
+      id: req.query.id,
+    });
+    let newOpts = selectedPoll.options.map((x) => {
+      if (x.option === req.query.option) {
+        return {
+          option: x.option,
+          selections: x.selections + 1,
+        };
+      } else {
+        return x;
+      };
+
+      polls.update({
+        id: req.query.id,
+      }, {
+        $set: { options: newOpts },
+      }, (err, result) => {
+        if (err) throw err;
+        db.close;
+      });
+    });
+  });
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));

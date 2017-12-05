@@ -8,6 +8,7 @@ class Poll extends Component {
       creator: '',
       options: ['loading!'],
     };
+    this.vote = this.bind.vote(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,25 @@ class Poll extends Component {
     //TODO: add refresh of poll data here
   }
 
+  vote( opt ) {
+    const data = {
+      id: this.props.match.params.id,
+      option: opt,
+    };
+    fetch('/api/vote', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+      credentials: 'include',
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      };
+  })};
+
   //TODO: Add "add option" functionality somewhere
   render() {
     return (
@@ -42,7 +62,12 @@ class Poll extends Component {
           {
             (this.state.options === []) ?
             <h1>LOADING!</h1>
-            : this.state.options.map((option) => (<p>{ option.opt }</p>))
+            : this.state.options.map((option) => (
+            <div>
+              <span>{ option.opt }</span>
+              <button onClick={this.vote(option.opt)}></button>
+            </div>
+          )
         }
         </div>
       </div>

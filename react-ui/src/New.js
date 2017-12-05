@@ -37,7 +37,6 @@ class NewPoll extends Component {
       title: this.state.title,
       options: this.state.options,
     };
-    console.log(data);
     fetch('/api/addpoll', {
       method: 'POST',
       headers: {

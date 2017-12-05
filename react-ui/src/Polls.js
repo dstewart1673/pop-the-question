@@ -39,7 +39,8 @@ class Polls extends Component {
             <Col xs={12} md={8} mdOffset={2}>
               {this.state.polls.map((poll, index) => (
                   <div className='poll-list-item'>
-                    <h1>{ poll.title + ' created by ' + poll.creator }</h1>
+                    <h1>{ poll.title + ' created by ' + poll.creator + ' with '
+                      + responseCount(poll.options) + ' votes!'}</h1>
                   </div>
               ))}
             </Col>
@@ -48,6 +49,15 @@ class Polls extends Component {
       </div>
     );
   }
+}
+
+function responseCount(opts) {
+  let x = 0;
+  for (let i in opts) {
+    x += opts[i].selections;
+  };
+
+  return x;
 }
 
 export default Polls;
