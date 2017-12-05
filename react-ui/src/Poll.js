@@ -8,7 +8,7 @@ class Poll extends Component {
       creator: '',
       options: ['loading!'],
     };
-    this.vote = this.bind.vote(this);
+    this.vote = this.vote.bind(this);
   }
 
   componentDidMount() {
