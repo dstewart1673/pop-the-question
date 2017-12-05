@@ -47,7 +47,7 @@ class Poll extends Component {
       credentials: 'include',
     }).then((response) => {
       if (response.ok) {
-        return response.json();
+        console.log('BEEP!');
       };
     });
   };
