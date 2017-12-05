@@ -65,7 +65,7 @@ class Poll extends Component {
             : this.state.options.map((option) => (
               <div>
                 <h1>{ option.opt }</h1>
-                <button onClick={this.vote(option.opt)}></button>
+                <button onClick={this.vote(option.opt)}>VOTE!</button>
               </div>
             ))
           }
