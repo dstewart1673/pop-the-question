@@ -33,7 +33,7 @@ class Poll extends Component {
     //TODO: add refresh of poll data here
   }
 
-  vote( opt ) {
+  vote(opt) {
     const data = {
       id: this.props.match.params.id,
       option: opt,
@@ -50,7 +50,8 @@ class Poll extends Component {
       if (response.ok) {
         return response.json();
       };
-  })};
+    });
+  };
 
   //TODO: Add "add option" functionality somewhere
   render() {
@@ -59,16 +60,15 @@ class Poll extends Component {
         <h1>{this.state.title}</h1>
         <h2>A poll by {this.state.creator}.</h2>
         <div>
-          {
-            (this.state.options === []) ?
+          {(this.state.options === []) ?
             <h1>LOADING!</h1>
             : this.state.options.map((option) => (
-            <div>
-              <span>{ option.opt }</span>
-              <button onClick={this.vote(option.opt)}></button>
-            </div>
-          )
-        }
+              <div>
+                <h1>{ option.opt }</h1>
+                <button onClick={this.vote(option.opt)}></button>
+              </div>
+            ))
+          }
         </div>
       </div>
     );
