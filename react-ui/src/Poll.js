@@ -8,7 +8,6 @@ class Poll extends Component {
       creator: '',
       options: ['loading!'],
     };
-    this.vote = this.vote.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +32,7 @@ class Poll extends Component {
     //TODO: add refresh of poll data here
   }
 
-  vote(opt) {
+  vote = (opt) => () => {
     const data = {
       id: this.props.match.params.id,
       option: opt,
