@@ -216,19 +216,19 @@ app.post('/api/vote', (req, res) => {
     console.log('Connected!');
     if (err) throw err;
     const polls = db.collection('polls');
-    const selectedPoll = polls.findOne({
+    polls.findOne({
       id: req.query.id,
-    });
-    let newOpts = selectedPoll.options.map((x) => {
-      if (x.option === req.query.option) {
-        return {
-          option: x.option,
-          selections: x.selections + 1,
+    }, (err, result) => {
+      let newOpts = result.options.map((x) => {
+        if (x.option === req.query.option) {
+          return {
+            option: x.option,
+            selections: x.selections + 1,
+          };
+        } else {
+          return x;
         };
-      } else {
-        return x;
-      };
-
+      });
       polls.update({
         id: req.query.id,
       }, {
