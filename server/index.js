@@ -224,12 +224,13 @@ app.post('/api/vote', (req, res) => {
       console.log(result);
       let newOpts = result.options.map((x) => {
         if (x.opt === req.query.option) {
-          console.log(x.opt + 'HI!');
+          console.log(x);
           return {
             option: x.opt,
             selected: x.selected++,
           };
         } else {
+          console.log('blorp');
           return x;
         };
       });
