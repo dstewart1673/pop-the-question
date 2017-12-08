@@ -216,12 +216,12 @@ app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
 app.post('/api/vote', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     console.log('Connected!');
+    console.log(req.query.option);
     if (err) throw err;
     const polls = db.collection('polls');
     polls.findOne({
       id: req.query.id,
     }, (err, result) => {
-      console.log(result);
       let newOpts = result.options.map((x) => {
         if (x.opt === req.query.option) {
           console.log(x);
