@@ -168,7 +168,6 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
     const polls = db.collection('polls');
     polls.insertOne(newPoll, (err, result) => {
       if (err) throw err;
-      console.log(newPoll._id);
       const users = db.collection('users');
       users.update({
         id: req.user.id,
@@ -216,14 +215,14 @@ app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
 app.post('/api/vote', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     console.log('Connected!');
-    console.log(req.query.id);
+    console.log(req.body.id);
     if (err) throw err;
     const polls = db.collection('polls');
     polls.findOne({
-      id: req.query.id,
+      id: req.body.id,
     }, (err, result) => {
       let newOpts = result.options.map((x) => {
-        if (x.opt === req.query.option) {
+        if (x.opt === req.body.option) {
           console.log(x);
           return {
             option: x.opt,
