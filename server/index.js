@@ -223,11 +223,11 @@ app.post('/api/vote', (req, res) => {
     }, (err, result) => {
       console.log(result);
       let newOpts = result.options.map((x) => {
-        if (x.option === req.query.option) {
-          console.log(x.options + 'HI!');
+        if (x.opt === req.query.option) {
+          console.log(x.opt + 'HI!');
           return {
-            option: x.option,
-            selections: x.selections++,
+            option: x.opt,
+            selected: x.selected++,
           };
         } else {
           return x;
