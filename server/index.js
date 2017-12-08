@@ -216,7 +216,7 @@ app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
 app.post('/api/vote', (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     console.log('Connected!');
-    console.log(req.query.option);
+    console.log(req.query);
     if (err) throw err;
     const polls = db.collection('polls');
     polls.findOne({
