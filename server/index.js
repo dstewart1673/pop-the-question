@@ -1,3 +1,5 @@
+//TODO: Cache control headers
+
 const express = require('express');
 const path = require('path');
 const passport = require('passport');
@@ -219,9 +221,10 @@ app.post('/api/vote', (req, res) => {
     polls.findOne({
       id: req.query.id,
     }, (err, result) => {
+      console.log(result);
       let newOpts = result.options.map((x) => {
         if (x.option === req.query.option) {
-          console.log(x.selections);
+          console.log(x.options + 'HI!');
           return {
             option: x.option,
             selections: x.selections++,
