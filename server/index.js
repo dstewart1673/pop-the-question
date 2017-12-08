@@ -221,6 +221,7 @@ app.post('/api/vote', (req, res) => {
     polls.findOne({
       id: req.body.id,
     }, (err, result) => {
+      console.log(result);
       let newOpts = result.options.map((x) => {
         if (x.opt === req.body.option) {
           console.log(x);
