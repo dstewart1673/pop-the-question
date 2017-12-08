@@ -37,6 +37,7 @@ class Poll extends Component {
       id: this.props.match.params.id,
       option: opt,
     };
+    console.log(opt);
     fetch('/api/vote', {
       method: 'POST',
       headers: {
