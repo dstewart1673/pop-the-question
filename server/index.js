@@ -219,7 +219,7 @@ app.post('/api/vote', (req, res) => {
     if (err) throw err;
     const polls = db.collection('polls');
     polls.findOne({
-      id: req.body.id,
+      _id: ObjectID(req.body.id),
     }, (err, result) => {
       console.log(result);
       let newOpts = result.options.map((x) => {
