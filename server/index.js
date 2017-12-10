@@ -234,7 +234,7 @@ app.post('/api/vote', (req, res) => {
           return x;
         };
       });
-      polls.update({
+      polls.updateOne({
         id: req.query.id,
       }, {
         $set: { options: newOpts },
