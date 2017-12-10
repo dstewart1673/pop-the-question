@@ -226,7 +226,7 @@ app.post('/api/vote', (req, res) => {
         if (x.opt === req.body.option) {
           console.log(x);
           return {
-            option: req.body.option,
+            opt: x.opt,
             selected: x.selected + 1,
           };
         } else {
