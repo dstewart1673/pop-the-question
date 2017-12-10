@@ -235,7 +235,7 @@ app.post('/api/vote', (req, res) => {
         };
       });
       polls.updateOne({
-        _id: ObjectId(req.body.id),
+        _id: ObjectID(req.body.id),
       }, {
         $set: { options: newOpts },
       }, (err, result) => {
