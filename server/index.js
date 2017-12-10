@@ -240,6 +240,7 @@ app.post('/api/vote', (req, res) => {
         $set: { options: newOpts },
       }, (err, result) => {
         if (err) throw err;
+        console.log(newOpts);
         console.log('Updated!');
         db.close;
       });
