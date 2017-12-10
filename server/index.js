@@ -58,7 +58,6 @@ passport.use(new GitHubStrategy({
             const newUser = {
               id: prof.id,
               name: prof.displayName,
-              polls: [],
             };
             users.insertOne(newUser, (err, res) => {
               return done(null, parsed(newUser));
@@ -107,7 +106,7 @@ app.get('/auth/callback', passport.authenticate('github', {
   failureRedirect: '/login',
 }));
 
-//Provides logged-in user's created poll data.
+//Provides logged-in user's username and created poll data.
 app.get('/api/user', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err)
@@ -118,8 +117,18 @@ app.get('/api/user', ensureAuthenticated, (req, res) => {
     }, (err, result) => {
       if (err)
         throw err;
-      res.send(JSON.stringify(result));
-      db.close();
+      const userName = result.name;
+      db.collection('polls').find({ creatorID: req.user.id }).toArray((err, results) => {
+        if (err)
+          throw err;
+        const userPolls = results;
+        const data = {
+          name: userName,
+          polls: userPolls,
+        };
+        res.send(JSON.stringify(data));
+        db.close();
+      });
     });
   });
 });
@@ -160,6 +169,7 @@ app.get('/api/poll/:pollID', (req, res) => {
 app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   const newPoll = {
     creator: req.user.name,
+    creatorID: req.user.id,
     title: req.body.title,
     options: req.body.options,
   };
