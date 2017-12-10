@@ -227,7 +227,7 @@ app.post('/api/vote', (req, res) => {
           console.log(x);
           return {
             option: x.opt,
-            selected: x.selected++,
+            selected: x.selected + 1,
           };
         } else {
           console.log('blorp');
