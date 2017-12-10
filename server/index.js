@@ -193,12 +193,18 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
   });
 });
 
-/*app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
+app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
-    const
-  })
-})*/
+    db.collection('polls').deleteOne({ _id: ObjectID(req.body.pollID) }, (err, obj) => {
+      if (err)
+        throw err;
+      console.log('One poll deleted');
+      db.close();
+    });
+  });
+  res.end();
+});
 
 app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {

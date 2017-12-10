@@ -30,6 +30,23 @@ class UserPage extends Component {
     });
   }
 
+  delete = (poll) => () => {
+    const data = { pollID: poll };
+    fetch('/api/removePoll', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+      credentials: 'include',
+    }).then((response) => {
+      if (response.ok) {
+        console.log('BEEP!');
+      };
+    });
+  };
+
   render() {
     return (
       <div>
@@ -51,6 +68,7 @@ class UserPage extends Component {
                   <Row>
                     <Col xs={12} className='poll-block'>
                       <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+                      <button onClick={this.delete(poll._id)}>DELETE</button>
                     </Col>
                   </Row>
                 </Grid>
