@@ -16,6 +16,10 @@ class UserPage extends Component {
   }
 
   componentDidMount() {
+    this.update();
+  }
+
+  update = () => {
     fetch('/api/user', { credentials: 'include' }).then(response => {
       if (response.ok) {
         return response.json();
@@ -28,7 +32,7 @@ class UserPage extends Component {
         polls: json.polls,
       });
     });
-  }
+  };
 
   delete = (poll) => () => {
     const data = { pollID: poll };
@@ -45,6 +49,7 @@ class UserPage extends Component {
         console.log('BEEP!');
       };
     });
+    this.update();
   };
 
   render() {
