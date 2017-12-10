@@ -242,10 +242,11 @@ app.post('/api/vote', (req, res) => {
         if (err) throw err;
         console.log(newOpts);
         console.log('Updated!');
-        db.close;
+        db.close();
       });
     });
   });
+  res.end();
 });
 
 // All remaining requests return the React app, so it can handle routing.
