@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewOpt from 'NewOpt';
 
 class Poll extends Component {
   constructor(props) {
@@ -98,7 +99,7 @@ class Poll extends Component {
         <div>
           {this.state.addOpt ?
             <button onClick={this.addOption}>Add Option</button>
-            : <NewOption handleClick={this.handleAddOpt} />
+            : <NewOpt handleClick={this.handleAddOpt} />
           }
         </div>
       </div>
