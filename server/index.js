@@ -203,7 +203,7 @@ app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
     if (err) throw err;
     const polls = db.collection('polls');
     polls.updateOne({
-      _id: ObjectId(req.body.id),
+      _id: ObjectID(req.body.id),
     }, {
       $push: {
         options: {
