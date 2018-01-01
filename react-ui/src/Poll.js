@@ -56,10 +56,11 @@ class Poll extends Component {
   };
 
   addOption = () => {
-    this.setState({addOpt: true,});
+    this.setState({ addOpt: true });
   };
 
   handleAddOpt = (option) => () => {
+    console.log('BLOOP');
     const data = {
       id: this.props.match.params.id,
       option: option,
@@ -74,6 +75,7 @@ class Poll extends Component {
       credentials: 'include',
     }).then((response) => {
       if (response.ok) {
+        this.setState({ addOpt: false });
         this.update();
       };
     });
@@ -97,7 +99,7 @@ class Poll extends Component {
           }
         </div>
         <div>
-          {this.state.addOpt ?
+          {!this.state.addOpt ?
             <button onClick={this.addOption}>Add Option</button>
             : <NewOpt handleClick={this.handleAddOpt} />
           }
