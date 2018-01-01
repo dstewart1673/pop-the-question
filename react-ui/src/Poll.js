@@ -16,6 +16,10 @@ class Poll extends Component {
     this.update();
   }
 
+  componentDidUpdate() {
+    this.update();
+  }
+
   update = () => {
     fetch('/api/poll/' + this.props.match.params.id)
       .then(response => {
