@@ -207,7 +207,7 @@ app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
     }, {
       $push: {
         options: {
-          option: req.body.opt,
+          opt: req.body.opt,
           selections: 0,
         },
       },
