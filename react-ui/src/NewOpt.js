@@ -14,7 +14,7 @@ class NewOpt extends Component {
   };
 
   handleSubmit = (evt) => {
-    console.log('FLOOB');
+    console.log(this.state.optionText);
     evt.preventDefault();
     this.props.handleClick(this.state.optionText);
   };
