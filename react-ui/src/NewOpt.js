@@ -28,3 +28,5 @@ class NewOpt extends Component {
     );
   }
 }
+
+export default NewOpt;
