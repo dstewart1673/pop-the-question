@@ -7,10 +7,15 @@ class Poll extends Component {
       title: '',
       creator: '',
       options: ['loading!'],
+      addOpt: false,
     };
   }
 
   componentDidMount() {
+    this.update();
+  }
+
+  update = () => {
     fetch('/api/poll/' + this.props.match.params.id)
       .then(response => {
         if (!response.ok) {
@@ -26,11 +31,7 @@ class Poll extends Component {
           options: json.options,
         });
       });
-  }
-
-  componentDidUpdate() {
-    //TODO: add refresh of poll data here
-  }
+  };
 
   vote = (opt) => () => {
     const data = {
@@ -48,7 +49,31 @@ class Poll extends Component {
       credentials: 'include',
     }).then((response) => {
       if (response.ok) {
-        console.log('BEEP!');
+        this.update();
+      };
+    });
+  };
+
+  addOption = () => {
+    this.setState({addOpt: true,});
+  };
+
+  handleAddOpt = (option) => () => {
+    const data = {
+      id: this.props.match.params.id,
+      option: option,
+    };
+    fetch('/api/addOpt', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+      credentials: 'include',
+    }).then((response) => {
+      if (response.ok) {
+        this.update();
       };
     });
   };
@@ -68,6 +93,12 @@ class Poll extends Component {
                 <button onClick={this.vote(option.opt)}>VOTE!</button>
               </div>
             ))
+          }
+        </div>
+        <div>
+          {this.state.addOpt ?
+            <button onClick={this.addOption}>Add Option</button>
+            : <NewOption handleClick={this.handleAddOpt} />
           }
         </div>
       </div>

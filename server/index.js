@@ -1,4 +1,4 @@
-//TODO: Cache control headers
+
 
 const express = require('express');
 const path = require('path');
@@ -206,23 +206,23 @@ app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
   res.end();
 });
 
-app.get('/api/addOpt', ensureAuthenticated, (req, res) => {
+app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const polls = db.collection('polls');
     polls.update({
-      id: req.query.id,
+      id: req.body.id,
     }, {
       $push: {
         options: {
-          option: req.query.option,
+          option: req.body.option,
           selections: 0,
         },
       },
     }, (err, result) => {
       if (err)
         throw err;
-      res.redirect('/poll/' + req.query.id);
+      res.redirect('/poll/' + req.body.id);
       db.close();
     });
   });
