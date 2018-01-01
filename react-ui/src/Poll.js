@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewOpt from 'NewOpt';
+import NewOpt from './NewOpt';
 
 class Poll extends Component {
   constructor(props) {
