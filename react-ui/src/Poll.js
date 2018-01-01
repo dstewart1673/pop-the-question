@@ -59,7 +59,7 @@ class Poll extends Component {
     this.setState({ addOpt: true });
   };
 
-  handleAddOpt = (option) => () => {
+  handleAddOpt = (option) => {
     console.log('BLOOP');
     const data = {
       id: this.props.match.params.id,
