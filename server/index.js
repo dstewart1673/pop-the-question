@@ -178,17 +178,8 @@ app.post('/api/addpoll', ensureAuthenticated, (req, res) => {
     const polls = db.collection('polls');
     polls.insertOne(newPoll, (err, result) => {
       if (err) throw err;
-      const users = db.collection('users');
-      users.update({
-        id: req.user.id,
-      }, {
-        $push: {
-          polls: { _id: newPoll._id, title: newPoll.title },
-        },
-      }, (err, result) => {
-        res.send(JSON.stringify({ id: newPoll._id }));
-        db.close();
-      });
+      res.send(JSON.stringify({ id: result._id }));
+      db.close();
     });
   });
 });
@@ -211,8 +202,8 @@ app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const polls = db.collection('polls');
-    polls.update({
-      id: req.body.id,
+    polls.updateOne({
+      _id: ObjectId(req.body.id),
     }, {
       $push: {
         options: {
