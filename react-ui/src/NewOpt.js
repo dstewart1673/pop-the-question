@@ -9,10 +9,12 @@ class NewOpt extends Component {
   }
 
   handleOptChange = (evt) => {
+    console.log('BLEEP');
     this.setState({ optionText: evt.target.value });
   };
 
   handleSubmit = (evt) => {
+    console.log('FLOOB');
     evt.preventDefault();
     this.props.handleClick(this.state.optionText);
   };
