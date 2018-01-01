@@ -207,6 +207,7 @@ app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
 });
 
 app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
+  console.log(req.body.id + " " + req.body.opt)
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const polls = db.collection('polls');
@@ -215,7 +216,7 @@ app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
     }, {
       $push: {
         options: {
-          option: req.body.option,
+          option: req.body.opt,
           selections: 0,
         },
       },

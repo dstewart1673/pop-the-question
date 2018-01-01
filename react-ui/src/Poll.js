@@ -63,7 +63,7 @@ class Poll extends Component {
     console.log('BLOOP');
     const data = {
       id: this.props.match.params.id,
-      option: option,
+      opt: option,
     };
     fetch('/api/addOpt', {
       method: 'POST',
