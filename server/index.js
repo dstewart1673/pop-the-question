@@ -207,7 +207,7 @@ app.post('/api/removepoll', ensureAuthenticated, (req, res) => {
 });
 
 app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
-  console.log(req.body.id + " " + req.body.opt)
+  console.log(req.body.id + " " + req.body.opt);
   mongodb.connect(mongoUrl, (err, db) => {
     if (err) throw err;
     const polls = db.collection('polls');
@@ -223,6 +223,7 @@ app.post('/api/addOpt', ensureAuthenticated, (req, res) => {
     }, (err, result) => {
       if (err)
         throw err;
+      console.log(result);
       res.redirect('/poll/' + req.body.id);
       db.close();
     });
