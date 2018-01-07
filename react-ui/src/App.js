@@ -7,7 +7,7 @@ import Polls from './Polls';
 import UserPage from './UserPage';
 import Poll from './Poll';
 import NewPoll from './New';
-import LoggedInHeader from './LoggedInHeader';
+import Header from './Header';
 import UnloggedHeader from './UnloggedHeader';
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <Grid fluid={true}>
-            {(this.state.user) ? <LoggedInHeader user={this.state.user} /> : <UnloggedHeader />}
+            <Header user={this.state.user} />
           </Grid>
         </div>
         <Switch>
