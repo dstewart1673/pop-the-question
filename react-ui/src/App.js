@@ -26,6 +26,7 @@ class App extends Component {
         return { name: null };
       }
     }).then((json) => {
+      console.log(json.name);
       this.setState({
         user: json.name,
       });
