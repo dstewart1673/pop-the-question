@@ -10,10 +10,10 @@ class UnloggedHeader extends Component {
   render() {
     return (
       <Row>
-        <Col xs={3}>
+        <Col xs={3} md={2}>
           <h3>POP The Question!</h3>
         </Col>
-        <Col xs={3} xsOffset={6} md={1} mdOffset={11}>
+        <Col xs={3} xsOffset={5} md={1} mdOffset={9}>
           <a href='/login'><button class='login'>Log In</button></a>
         </Col>
       </Row>
