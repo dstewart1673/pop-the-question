@@ -13,7 +13,7 @@ class UnloggedHeader extends Component {
         <Col xs={3}>
           <h3>POP The Question!</h3>
         </Col>
-        <Col xs={3} xsOffset={9} md={1} mdOffset={11}>
+        <Col xs={3} xsOffset={6} md={1} mdOffset={11}>
           <a href='/login'><button class='login'>Log In</button></a>
         </Col>
       </Row>
