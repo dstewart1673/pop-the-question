@@ -1,8 +1,8 @@
 import React from 'react';
-import './Header.css';
+import './UnloggedButtons.css';
 
 const UnloggedButtons = () => (
-  <div className='container'>
+  <div>
     <a href='/login'><button class='login'>Log In</button></a>
   </div>
 );
