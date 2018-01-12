@@ -7,20 +7,17 @@ import UnloggedButtons from './UnloggedButtons';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: this.props.user,
-    };
   }
 
   render() {
-    console.log(this.state.user);
+    console.log(this.props.user);
     return (
       <Row>
         <Col xs={3} md={2}>
           <h3>POP The Question!</h3>
         </Col>
         <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
-          {(this.state.user ? <LoggedButtons /> : <UnloggedButtons />)}
+          {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
         </Col>
       </Row>
     );
