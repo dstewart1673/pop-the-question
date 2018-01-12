@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import LoggedButtons from './LoggedButtons';
 import UnloggedButtons from './UnloggedButtons';
+import './Header.css';
 
 class Header extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Header extends Component {
         <Col xs={3} md={2}>
           <h3>POP The Question!</h3>
         </Col>
-        <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
+        <Col xs={3} xsOffset={5} md={2} mdOffset={7} class="container">
           {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
         </Col>
       </Row>
