@@ -25,13 +25,14 @@ class App extends Component {
       } else {
         return { name: null };
       }
-    }).then((json) => {
-      console.log(json.name);
-      this.setState({
-        user: json.name,
-      });
-    });
+    }).then(loadedUser(json));
   }
+
+  loadedUser = (json) => {
+    this.setState({
+      user: json.name,
+    });
+  };
 
   render() {
     return (
