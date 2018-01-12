@@ -25,7 +25,7 @@ class App extends Component {
       } else {
         return { name: null };
       }
-    }).then(loadedUser(json));
+    }).then((json) => loadedUser(json));
   }
 
   loadedUser = (json) => {
