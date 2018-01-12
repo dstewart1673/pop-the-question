@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UnloggedButtons = () => (
-  <div>
+  <div class='container'>
     <a href='/login'><button class='login'>Log In</button></a>
   </div>
 );
