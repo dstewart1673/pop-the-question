@@ -2,8 +2,7 @@
   background-color: #222;
   height: 50px;
   padding: 5px;
-  display: flex;
-  align-items: center;
+  color: white;
 }
 
 .App a {
