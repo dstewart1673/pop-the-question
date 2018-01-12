@@ -13,7 +13,7 @@ class Header extends Component {
   render() {
     console.log(this.props.user);
     return (
-      <Row>
+      <Row class='container'>
         <Col xs={3} md={2} class='container'>
           <h3>POP The Question!</h3>
         </Col>
