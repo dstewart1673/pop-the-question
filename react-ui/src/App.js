@@ -26,7 +26,6 @@ class App extends Component {
         return { name: null };
       }
     }).then((json) => {
-      console.log(json.name);
       this.setState({
         user: json.name,
       });
@@ -34,7 +33,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('rendering' + this.state.user);
     return (
       <div className="App">
         <div className="App-header">

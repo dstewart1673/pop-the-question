@@ -11,11 +11,10 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.user);
     return (
       <Row class='container'>
         <Col xs={3} md={2} class='container'>
-          <h3>POP The Question!</h3>
+          <h3 class='container'>POP The Question!</h3>
         </Col>
         <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
           {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
