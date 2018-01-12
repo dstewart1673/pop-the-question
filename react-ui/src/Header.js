@@ -13,6 +13,7 @@ class Header extends Component {
   }
 
   render() {
+    console.log(this.state.user);
     return (
       <Row>
         <Col xs={3} md={2}>
