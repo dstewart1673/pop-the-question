@@ -1,7 +1,9 @@
 .App-header {
-  background-color: #262;
+  background-color: #222;
   height: 50px;
   padding: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .App a {
