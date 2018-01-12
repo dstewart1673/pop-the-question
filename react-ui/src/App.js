@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('rendering');
+    console.log('rendering' + this.state.user);
     return (
       <div className="App">
         <div className="App-header">
