@@ -13,7 +13,7 @@ class Header extends Component {
   render() {
     return (
       <Row class='container'>
-        <Col xs={3} md={2} className='container'>
+        <Col xs={3} md={3} className='container'>
           <h3>POP The Question!</h3>
         </Col>
         <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
