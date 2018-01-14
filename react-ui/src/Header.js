@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap';
 import LoggedButtons from './LoggedButtons';
 import UnloggedButtons from './UnloggedButtons';
-import './Header.css';
 
 class Header extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar inverse collapseOnSelect fluid>
         <Navbar.Header>
           <Navbar.Brand>
             <h2>Pop! The Question!</h2>
