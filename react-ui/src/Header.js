@@ -19,8 +19,8 @@ class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           //{ this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
-          {if (this.props.user) {
-            <Nav pullRight>
+          {this.props.user ?
+            (<Nav pullRight>
               <LinkContainer to='/new'>
                 <NavItem eventKey={1}>
                   +
@@ -34,14 +34,14 @@ class Header extends Component {
               <NavItem eventKey={3} href='/logout'>
                 Logout
               </NavItem>
-            </Nav>
-          } else {
-            <Nav pullRight>
+            </Nav>)
+          :
+            (<Nav pullRight>
               <NavItem eventKey={1} href='/login'>
                 Login
               </NavItem>
-            </Nav>
-          }}
+            </Nav>)
+          }
         </Navbar.Collapse>
       </Navbar>
 
