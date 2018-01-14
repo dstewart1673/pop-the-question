@@ -8,7 +8,6 @@ import UserPage from './UserPage';
 import Poll from './Poll';
 import NewPoll from './New';
 import Header from './Header';
-import UnloggedHeader from './UnloggedHeader';
 
 class App extends Component {
   constructor(props) {
