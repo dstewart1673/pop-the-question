@@ -10,13 +10,13 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar inverse collapseOnSelect fluid>
+      <Navbar inverse collapseOnSelect fluid staticTop>
         <Navbar.Header>
           <Navbar.Brand>
             <h2>Pop! The Question!</h2>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Toggle />
         <Navbar.Collapse>
           { this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
         </Navbar.Collapse>
