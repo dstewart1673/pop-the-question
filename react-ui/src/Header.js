@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
 //import LoggedButtons from './LoggedButtons';
 //import UnloggedButtons from './UnloggedButtons';
 
@@ -19,7 +20,6 @@ class Header extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          //{ this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
           {this.props.user ?
             (<Nav pullRight>
               <LinkContainer to='/new'>
@@ -45,15 +45,6 @@ class Header extends Component {
           }
         </Navbar.Collapse>
       </Navbar>
-
-      // <Row class='container'>
-      //   <Col xs={3} md={3} className='container'>
-      //     <h3>POP The Question!</h3>
-      //   </Col>
-      //   <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
-      //     {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
-      //   </Col>
-      // </Row>
     );
   }
 }
