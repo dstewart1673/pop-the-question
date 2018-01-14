@@ -1,13 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import './Header.css';
 
 const LoggedButtons = () => (
-  <div className='container'>
-    <Link to='/new'><button class='newPoll'>+</button></Link>
-    <Link to='/user'><button class='profile'>Profile</button></Link>
-    <a href='/logout'><button class='logout'>Logout</button></a>
-  </div>
+  <Nav pullRight>
+    <LinkContainer to='/new'>
+      <NavItem eventKey={1}>
+        +
+      </NavItem>
+    </LinkContainer>
+    <LinkContainer to='/user'>
+      <NavItem eventKey={2}>
+        Profile
+      </NavItem>
+    </LinkContainer>
+    <NavItem eventKey={3} href='/logout'>
+      Logout
+    </NavItem>
+  </Nav>
+
+  // <div className='container'>
+  //   <Link to='/new'><button class='newPoll'>+</button></Link>
+  //   <Link to='/user'><button class='profile'>Profile</button></Link>
+  //   <a href='/logout'><button class='logout'>Logout</button></a>
+  // </div>
 );
 
 export default LoggedButtons;

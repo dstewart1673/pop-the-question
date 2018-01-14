@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Row, Col } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import LoggedButtons from './LoggedButtons';
 import UnloggedButtons from './UnloggedButtons';
 import './Header.css';
@@ -12,14 +11,26 @@ class Header extends Component {
 
   render() {
     return (
-      <Row class='container'>
-        <Col xs={3} md={3} className='container'>
-          <h3>POP The Question!</h3>
-        </Col>
-        <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
-          {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
-        </Col>
-      </Row>
+      <Navbar inverse collapseOnSelect>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <h2>Pop! The Question!</h2>
+          </Navbar.Brand>
+        </Navbar.Header>
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          { this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
+        </Navbar.Collapse>
+      </Navbar>
+
+      // <Row class='container'>
+      //   <Col xs={3} md={3} className='container'>
+      //     <h3>POP The Question!</h3>
+      //   </Col>
+      //   <Col xs={3} xsOffset={5} md={2} mdOffset={7}>
+      //     {(this.props.user ? <LoggedButtons /> : <UnloggedButtons />)}
+      //   </Col>
+      // </Row>
     );
   }
 }

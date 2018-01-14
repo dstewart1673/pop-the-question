@@ -1,10 +1,16 @@
 import React from 'react';
-import './UnloggedButtons.css';
+import { Navbar } from 'react-bootstrap';
 
 const UnloggedButtons = () => (
-  <div>
-    <a href='/login'><button class='login'>Log In</button></a>
-  </div>
+  <Nav pullRight>
+    <NavItem eventKey={1} href='/login'>
+      Login
+    </NavItem>
+  </Nav>
+
+  // <div>
+  //   <a href='/login'><button class='login'>Log In</button></a>
+  // </div>
 );
 
 export default UnloggedButtons;
