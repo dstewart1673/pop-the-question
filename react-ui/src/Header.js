@@ -12,7 +12,7 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar inverse collapseOnSelect fluid staticTop bsClass='navbar'>
+      <Navbar inverse collapseOnSelect staticTop bsClass='navbar'>
         <Navbar.Header>
           <Navbar.Brand>
             <h2>Pop! The Question!</h2>
