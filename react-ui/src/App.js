@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
-import './App.css';
 import Home from './Home';
 import Polls from './Polls';
 import UserPage from './UserPage';
