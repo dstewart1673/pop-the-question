@@ -15,7 +15,7 @@ class Header extends Component {
       <Navbar inverse collapseOnSelect fluid className='navbarWidth'>
         <Navbar.Header>
           <Navbar.Brand>
-            <h1>Pop! The Question!</h1>
+            <a href='/'>Pop! The Question!</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
