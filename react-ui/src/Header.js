@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap';
-import LoggedButtons from './LoggedButtons';
-import UnloggedButtons from './UnloggedButtons';
+//import LoggedButtons from './LoggedButtons';
+//import UnloggedButtons from './UnloggedButtons';
 
 class Header extends Component {
   constructor(props) {
@@ -18,7 +18,30 @@ class Header extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          { this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
+          //{ this.props.user ? <LoggedButtons /> : <UnloggedButtons /> }
+          {if (this.props.user) {
+            <Nav pullRight>
+              <LinkContainer to='/new'>
+                <NavItem eventKey={1}>
+                  +
+                </NavItem>
+              </LinkContainer>
+              <LinkContainer to='/user'>
+                <NavItem eventKey={2}>
+                  Profile
+                </NavItem>
+              </LinkContainer>
+              <NavItem eventKey={3} href='/logout'>
+                Logout
+              </NavItem>
+            </Nav>
+          } else {
+            <Nav pullRight>
+              <NavItem eventKey={1} href='/login'>
+                Login
+              </NavItem>
+            </Nav>
+          }}
         </Navbar.Collapse>
       </Navbar>
 
