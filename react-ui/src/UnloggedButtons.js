@@ -4,8 +4,8 @@ import './style/UnloggedButtons.css';
 
 const UnloggedButtons = () => (
   <Nav navbar pullRight>
-    <NavItem eventKey={1} href='/login' bsClass='navAdjust'>
-      Login
+    <NavItem eventKey={1} href='/login'>
+      <h2 className='navAdjust'>Login</h2>
     </NavItem>
   </Nav>
 );
