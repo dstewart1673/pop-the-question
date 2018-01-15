@@ -61,7 +61,7 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
-              <h1>TEST</h2>
+              <h1>TEST</h1>
             </Col>
           </Row>
         </Grid>
