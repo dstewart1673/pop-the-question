@@ -69,8 +69,7 @@ class UserPage extends Component {
               <Grid fluid={true}>
                 <Row>
                   <Col xs={12} className='poll-block'>
-                    <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
-                    <button onClick={this.delete(poll._id)}>DELETE</button>
+                    <h1>WORKS!</h1>
                   </Col>
                 </Row>
               </Grid>
