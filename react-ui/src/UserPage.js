@@ -70,14 +70,7 @@ class UserPage extends Component {
             <Col xs={12} md={8} mdOffset={2}>
               <Panel>
                 <Panel.Heading>Here are your polls:</Panel.Heading>
-                <ListGroup>
-                  {this.state.polls.map((poll) => (
-                    <ListGroupItem>
-                      <Link to={'/poll/' + poll._id}><h1>poll.title</h1></Link>
-                      <button onClick={this.delete(poll._id)}>DELETE</button>
-                    </ListGroupItem>
-                  ))}
-                </ListGroup>
+                
               </Panel>
             </Col>
           </Row>
