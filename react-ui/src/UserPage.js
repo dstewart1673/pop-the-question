@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-//import { Link } from 'react-router-dom';
 import './UserPage.css';
 
 //This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
@@ -68,10 +66,14 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={8} mdOffset={2}>
-              <Panel>
-                <Panel.Heading>Here are your polls:</Panel.Heading>
-
-              </Panel>
+              <Grid fluid={true}>
+                <Row>
+                  <Col xs={12} className='poll-block'>
+                    <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+                    <button onClick={this.delete(poll._id)}>DELETE</button>
+                  </Col>
+                </Row>
+              </Grid>
             </Col>
           </Row>
         </Grid>
