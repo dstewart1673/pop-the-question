@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import LoggedButtons from './LoggedButtons';
 import UnloggedButtons from './UnloggedButtons';
 import './style/Header.css';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Navbar inverse collapseOnSelect fluid>

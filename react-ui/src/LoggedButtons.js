@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
 
 const LoggedButtons = () => (
-  <Nav navbar pullRight className='navAdjust'>
+  <Nav navbar pullRight>
     <LinkContainer to='/new'>
       <NavItem eventKey={1}>
         +
