@@ -66,7 +66,7 @@ class UserPage extends Component {
                 {this.state.polls.map((poll) => (
                   <ListGroupItem>
                     <Link to={ '/poll/' + poll._id }><span>{poll.title}</span></Link>
-                    <Button onClick={this.delete(poll._id)} bsStyle='danger'>DELETE</Button>
+                    <Button onClick={this.delete(poll._id)} bsStyle='danger' className='pull-right'>DELETE</Button>
                   </ListGroupItem>
                 ))}
               </ListGroup>
