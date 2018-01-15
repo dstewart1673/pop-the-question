@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './UserPage.css';
 
@@ -61,7 +61,14 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
-              <h1>TEST</h1>
+              <ListGroup>
+                {this.state.polls.map((poll) => (
+                  <ListGroupItem>
+                    <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+                    <button onClick={this.delete(poll._id)}>DELETE</button>
+                  </ListGroupItem>
+                ))}
+              </ListGroup>
             </Col>
           </Row>
         </Grid>
