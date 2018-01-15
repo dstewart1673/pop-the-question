@@ -76,6 +76,7 @@ class UserPage extends Component {
                       <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
                       <button pullRight onClick={this.delete(poll._id)}>DELETE</button>
                     </ListGroupItem>
+
                     // <Grid fluid={true}>
                     //   <Row>
                     //     <Col xs={12} className='poll-block'>
@@ -86,6 +87,7 @@ class UserPage extends Component {
                     // </Grid>
                   ))}
                 </ListGroup>
+              </Panel>
             </Col>
           </Row>
         </Grid>
