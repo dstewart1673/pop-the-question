@@ -7,6 +7,7 @@ import UserPage from './UserPage';
 import Poll from './Poll';
 import NewPoll from './New';
 import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
   constructor(props) {
@@ -33,11 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <Grid fluid={true}>
-            <Header user={this.state.user} />
-          </Grid>
-        </div>
+        <Header user={this.state.user} />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/polls' component={Polls} />
@@ -45,7 +42,7 @@ class App extends Component {
           <Route path='/poll/:id' component={Poll} />
           <Route path='/new' component={NewPoll} />
         </Switch>
-
+        <Footer />
       </div>
     );
   }
