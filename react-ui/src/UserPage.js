@@ -68,6 +68,7 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={8} mdOffset={2}>
+              <h1>Test</h1>
               // <Panel>
               //   <Panel.Heading>Here are your polls:</Panel.Heading>
               //   <ListGroup>
