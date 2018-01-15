@@ -62,7 +62,6 @@ class UserPage extends Component {
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
               <Panel>
-                <Panel.Heading>Here are your polls:</Panel.Heading>
                 <Panel.Body>Test</Panel.Body>
               </Panel>
             </Col>
