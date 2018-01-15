@@ -1,7 +1,6 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
-import './style/LoggedButtons.css';
 
 const LoggedButtons = () => (
   <Nav navbar pullRight className='navAdjust'>
