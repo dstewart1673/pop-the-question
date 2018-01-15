@@ -65,9 +65,6 @@ class UserPage extends Component {
             </Col>
           </Row>
         </Grid>
-        <Panel>
-          <Panel.Body>Test</Panel.Body>
-        </Panel>
       </div>
     );
   }
