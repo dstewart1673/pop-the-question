@@ -32,8 +32,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="App">
+        <div className="App-header">
           <Grid fluid={true}>
             <Header user={this.state.user} />
           </Grid>
