@@ -61,12 +61,13 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
-              <Panel>
-                <Panel.Body>Test</Panel.Body>
-              </Panel>
+              <h1>TEST</h2>
             </Col>
           </Row>
         </Grid>
+        <Panel>
+          <Panel.Body>Test</Panel.Body>
+        </Panel>
       </div>
     );
   }
