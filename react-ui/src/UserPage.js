@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './UserPage.css';
 
@@ -61,11 +61,20 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
+              <h3>Here are your polls:</h3>
               <ListGroup>
                 {this.state.polls.map((poll) => (
                   <ListGroupItem>
-                    <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
-                    <button onClick={this.delete(poll._id)} pullRight>DELETE</button>
+                    <Grid fluid={true}>
+                      <Row>
+                        <Col xs={10}>
+                          <Link to={ '/poll/' + poll._id }><h1>{poll.title}</h1></Link>
+                        </Col>
+                        <Col xs={2}>
+                          <Button onClick={this.delete(poll._id)} bsStyle='danger'>DELETE</Button>
+                        </Col>
+                      </Row>
+                    </Grid>
                   </ListGroupItem>
                 ))}
               </ListGroup>
