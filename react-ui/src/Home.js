@@ -1,11 +1,16 @@
 import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
 
 const Home = () => (
-  <div>
-    <h1>Hello!  Welcome to Pop! the Question!</h1>
-    <h2>Click <a href="/api/login">here</a> to login, or <a href="/polls">here </a>
-     to go straight to the polls!</h2>
-  </div>
+  <Jumbotron>
+    <h1>Hello!</h1>
+    <p>Welcome to Pop! the Question! a simple little polling app made by
+      <a href='dstewart1673.github.io'>Daniel Stewart</a>.
+    </p>
+    <p>
+      <Button bsStyle='primary'>To the polls!</Button>
+    </p>
+  </Jumbotron>
 );
 
 export default Home;
