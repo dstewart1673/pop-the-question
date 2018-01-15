@@ -61,18 +61,10 @@ class UserPage extends Component {
           </Row>
           <Row>
             <Col xs={12} md={10} mdOffset={1}>
-              <h2>Here are your polls:</h2>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} md={8} mdOffset={2}>
-              <Grid fluid={true}>
-                <Row>
-                  <Col xs={12} className='poll-block'>
-                    <h1>WORKS!</h1>
-                  </Col>
-                </Row>
-              </Grid>
+              <Panel>
+                <Panel.Heading>Here are your polls:</Panel.Heading>
+                <Panel.Body>Test</Panel.Body>
+              </Panel>
             </Col>
           </Row>
         </Grid>
