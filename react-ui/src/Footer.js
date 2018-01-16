@@ -1,10 +1,9 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
 
 const Footer = () => (
-  <Navbar inverse fixedBottom>
-    <Navbar.Text>Disclaimer</Navbar.Text>
-  </Navbar>
+  <div>
+    <h3>Disclaimer</h3>
+  </div>
 );
 
 export default Footer;
