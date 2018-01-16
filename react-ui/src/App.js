@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header user={this.state.user} />
-        <Switch>
+        <Switch className='content'>
           <Route exact path='/' component={Home} />
           <Route path='/polls' component={Polls} />
           <Route path='/user' component={UserPage} />
