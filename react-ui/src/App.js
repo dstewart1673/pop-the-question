@@ -8,6 +8,7 @@ import Poll from './Poll';
 import NewPoll from './New';
 import Header from './Header';
 import Footer from './Footer';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
