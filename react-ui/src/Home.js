@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, Jumbotron, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Home = () => (
   <Grid>
@@ -11,7 +12,9 @@ const Home = () => (
             <a href='dstewart1673.github.io'> Daniel Stewart</a>.
           </p>
           <p>
-            <Button bsStyle='primary'>To the polls!</Button>
+            <LinkContainer to='/polls'>
+              <Button bsStyle='primary'>To the polls!</Button>
+            </LinkContainer>
           </p>
         </Jumbotron>
       </Col>
