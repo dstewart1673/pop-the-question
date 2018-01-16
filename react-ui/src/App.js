@@ -7,7 +7,7 @@ import UserPage from './UserPage';
 import Poll from './Poll';
 import NewPoll from './New';
 import Header from './Header';
-import Footer from './Footer';
+import Disclaimer from './Disclaimer';
 import './App.css';
 
 class App extends Component {
@@ -42,8 +42,8 @@ class App extends Component {
           <Route path='/user' component={UserPage} />
           <Route path='/poll/:id' component={Poll} />
           <Route path='/new' component={NewPoll} />
+          <Route path='/disclaimer' component={Disclaimer} />
         </Switch>
-        <Footer />
       </div>
     );
   }
