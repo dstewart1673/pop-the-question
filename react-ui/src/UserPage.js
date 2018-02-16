@@ -3,7 +3,6 @@ import { Grid, Row, Col, ListGroup, ListGroupItem, Button } from 'react-bootstra
 import { Link } from 'react-router-dom';
 import './UserPage.css';
 
-//This won't work properly until /api/addPoll is fixed to add new poll data to user's db entry
 class UserPage extends Component {
   constructor(props) {
     super(props);
