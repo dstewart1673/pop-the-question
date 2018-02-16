@@ -7,7 +7,7 @@ import './style/Header.css';
 class Header extends Component {
   render() {
     return (
-      <Navbar inverse fluid staticTop>
+      <Navbar inverse defaultExpanded collapseOnSelect fluid staticTop>
         <Navbar.Header>
           <Navbar.Brand>
             <a href='/' className='title'>Pop! The Question!</a>
